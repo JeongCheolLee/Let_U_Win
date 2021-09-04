@@ -3,10 +3,11 @@ import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 
 function PickOrder() {
     return (
-      <BrowserRouter>
-            <h1>Let U Win</h1>
-      </BrowserRouter>
-
+      <div>
+        <h1>Let U Win</h1>
+        <BrowserRouter>
+        </BrowserRouter>
+      </div>
     )
 }
 
