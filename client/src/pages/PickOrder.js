@@ -16,7 +16,7 @@ function PickOrder({location, match}) {
             <button> 선픽인가요?</button>
           </Link>
 
-          <Link to="/pickorder/lastpick">
+          <Link to={`${match.url}/lastpick`}>
             <button> 후픽인가요?</button>
           </Link>
           
