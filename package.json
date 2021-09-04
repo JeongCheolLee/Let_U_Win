@@ -1,0 +1,19 @@
+{
+  "name": "let_u_win",
+  "version": "1.0.0",
+  "description": "We can give you the suggestion about pick at the lane phase.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JeongCheolLee/Let_U_Win.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JeongCheolLee/Let_U_Win/issues"
+  },
+  "homepage": "https://github.com/JeongCheolLee/Let_U_Win#readme"
+}
