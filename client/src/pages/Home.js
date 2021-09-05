@@ -3,16 +3,16 @@ import {React, useState} from 'react';
 //test
 
 function Home({history}) {
-    const [currentLane, setCurrentLane] = useState("none");
+    const [lane, setLane] = useState("none");
 
     const changeHandler = (e) => {
-        setCurrentLane(e.target.value);
+        setLane(e.target.value);
     }
 
     const btnClickHandler = () => {
         history.push({
             pathname:"/pickorder",
-            state:currentLane
+            state:lane
         });
     }
 
