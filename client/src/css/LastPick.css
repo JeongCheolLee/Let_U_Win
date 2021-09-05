@@ -1,0 +1,22 @@
+.champion-select-contatiner {
+    float: left;
+    width: 605px;
+    background-color: #f9f9fa;
+    border: solid 1px #e9eff4;
+    border-right: none;
+    box-sizing: border-box;
+}
+
+.champion-index__champion-list {
+    margin: 10px 8px;
+    font-size: 0;
+}
+
+.champion-index__champion-item {
+    position: relative;
+    display: inline-block;
+    margin-top: 20px;
+    margin-left: 12px;
+    width: 84px;
+    vertical-align: top;
+}

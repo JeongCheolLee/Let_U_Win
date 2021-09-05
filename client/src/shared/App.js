@@ -3,8 +3,8 @@ import Home from "../pages/Home";
 import PickOrder from "../pages/PickOrder";
 import FirstPick from "../pages/FirstPick";
 import LastPick from "../pages/LastPick";
-import { BrowserRouter as Router, Route, Switch, Link} from "react-router-dom";
-
+import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import '../css/App.css';
 function App() {
     return (
         <Router>
