@@ -1,9 +1,16 @@
-import React from 'react'
+import React from 'react';
+import StandardImageList from '../components/image_list'
 
-function FirstPick() {
+function FirstPick(location) {
+
+    console.log(location.state)
+
     return (
         <div>
-            FirstPickpage
+            <h1>{location.state}선픽이시군요!</h1>
+
+            {StandardImageList()}
+
         </div>
     )
 }

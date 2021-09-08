@@ -1,17 +1,19 @@
 import React from 'react'
-
 import { Link } from 'react-router-dom'
 
 
-function PickOrder({location, match}) {
+function PickOrder({history ,location, match}) {
+
+    const lane = location.state
+
     return (
       <div>
         <h1>Let U Win</h1>
         <p>
-          {location.state}
+          {lane}
         </p>
 
-        <body>
+
           <Link to={`${match.url}/firstpick`}> 
             <button> 선픽인가요?</button>
           </Link>
@@ -20,7 +22,7 @@ function PickOrder({location, match}) {
             <button> 후픽인가요?</button>
           </Link>
           
-        </body>
+
       </div>
     )
 }
