@@ -10,52 +10,32 @@ import InfoIcon from '@material-ui/icons/Info';
 
 const itemData = [
   {
-    img: '../images/champions/aatrox.jpg',
+    img: 'https://github.com/JeongCheolLee/Let_U_Win/blob/main/client/test(temp)/aatrox.jpg?raw=true',
     title: 'aatrox',
+  }, 
+  {
+    img: 'https://github.com/JeongCheolLee/Let_U_Win/blob/main/client/test(temp)/ahri.jpg?raw=true',
+    title: 'ahri',
   },
   {
-    img: 'client/src/images/champions/ahri.jpg',
-    title: 'Burger',
+    img: 'https://github.com/JeongCheolLee/Let_U_Win/blob/main/client/test(temp)/akali.jpg?raw=true',
+    title: 'akali',
   },
   {
-    img: 'https://images.unsplash.com/photo-1522770179533-24471fcdba45',
-    title: 'Camera',
+    img: 'https://github.com/JeongCheolLee/Let_U_Win/blob/main/client/test(temp)/akshan.jpg?raw=true',
+    title: 'akshan',
   },
   {
-    img: 'https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c',
-    title: 'Coffee',
+    img: 'https://github.com/JeongCheolLee/Let_U_Win/blob/main/client/test(temp)/anivia.jpg?raw=true',
+    title: 'anivia',
   },
   {
-    img: 'https://images.unsplash.com/photo-1533827432537-70133748f5c8',
-    title: 'Hats',
+    img: 'https://github.com/JeongCheolLee/Let_U_Win/blob/main/client/test(temp)/Aphelios.jpg?raw=true',
+    title: 'aphelios',
   },
   {
-    img: 'https://images.unsplash.com/photo-1558642452-9d2a7deb7f62',
-    title: 'Honey',
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1516802273409-68526ee1bdd6',
-    title: 'Basketball',
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1518756131217-31eb79b20e8f',
-    title: 'Fern',
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1597645587822-e99fa5d45d25',
-    title: 'Mushrooms',
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1567306301408-9b74779a11af',
-    title: 'Tomato basil',
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1471357674240-e1a485acb3e1',
-    title: 'Sea star',
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1589118949245-7d38baf380d6',
-    title: 'Bike',
+    img: 'https://github.com/JeongCheolLee/Let_U_Win/blob/main/client/test(temp)/ashe.jpg?raw=true',
+    title: 'ashe',
   },
 ];
 
@@ -85,19 +65,14 @@ export default function TitlebarImageList() {
     <div className={classes.root}>
       <ImageList rowHeight={180} className={classes.imageList}>
         <ImageListItem key="Subheader" cols={6} style={{ height: 'auto' }}>
-          <ListSubheader component="div">December</ListSubheader>
+          <ListSubheader component="div">Champions</ListSubheader>
         </ImageListItem>
         {itemData.map((item) => (
           <ImageListItem key={item.img}>
             <img src={item.img} alt={item.title} />
             <ImageListItemBar
               title={item.title}
-              subtitle={<span>by: {item.author}</span>}
-              actionIcon={
-                <IconButton aria-label={`info about ${item.title}`} className={classes.icon}>
-                  <InfoIcon />
-                </IconButton>
-              }
+ 
             />
           </ImageListItem>
         ))}
