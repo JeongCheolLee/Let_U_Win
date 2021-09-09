@@ -1,31 +1,20 @@
 import React from 'react';
-import ImageList from '@mui/material/ImageList';
-import ImageListItem from '@mui/material/ImageListItem';
+import { makeStyles } from '@material-ui/core/styles';
+import ImageList from '@material-ui/core/ImageList';
+import ImageListItem from '@material-ui/core/ImageListItem';
+import ImageListItemBar from '@material-ui/core/ImageListItemBar';
+import ListSubheader from '@material-ui/core/ListSubheader';
+import IconButton from '@material-ui/core/IconButton';
+import InfoIcon from '@material-ui/icons/Info';
 
-export default function StandardImageList() {
-  return (
-    <ImageList sx={{ width: 500, height: 450 }} cols={3} rowHeight={164}>
-      {itemData.map((item) => (
-        <ImageListItem key={item.img}>
-          <img
-            src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
-            srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-            alt={item.title}
-            loading="lazy"
-          />
-        </ImageListItem>
-      ))}
-    </ImageList>
-  );
-}
 
 const itemData = [
   {
-    img: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
-    title: 'Breakfast',
+    img: '../images/champions/aatrox.jpg',
+    title: 'aatrox',
   },
   {
-    img: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d',
+    img: 'client/src/images/champions/ahri.jpg',
     title: 'Burger',
   },
   {
@@ -69,3 +58,51 @@ const itemData = [
     title: 'Bike',
   },
 ];
+
+
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+    overflow: 'hidden',
+    backgroundColor: theme.palette.background.paper,
+  },
+  imageList: {
+    width: 500,
+    height: 450,
+  },
+  icon: {
+    color: 'rgba(255, 255, 255, 0.54)',
+  },
+})); 
+
+export default function TitlebarImageList() {
+  const classes = useStyles();
+
+  return (
+    <div className={classes.root}>
+      <ImageList rowHeight={180} className={classes.imageList}>
+        <ImageListItem key="Subheader" cols={6} style={{ height: 'auto' }}>
+          <ListSubheader component="div">December</ListSubheader>
+        </ImageListItem>
+        {itemData.map((item) => (
+          <ImageListItem key={item.img}>
+            <img src={item.img} alt={item.title} />
+            <ImageListItemBar
+              title={item.title}
+              subtitle={<span>by: {item.author}</span>}
+              actionIcon={
+                <IconButton aria-label={`info about ${item.title}`} className={classes.icon}>
+                  <InfoIcon />
+                </IconButton>
+              }
+            />
+          </ImageListItem>
+        ))}
+      </ImageList>
+    </div>
+  );
+}
+

@@ -1,15 +1,17 @@
 import React from 'react';
-import StandardImageList from '../components/image_list'
+import TitlebarImageList from '../components/image_list'
 
-function FirstPick(location) {
-
-    console.log(location.state)
+function FirstPick({location}) {
+    console.log(location.state);
+    const lane = location.state;
+    console.log(location);
+    console.log(lane);
 
     return (
         <div>
-            <h1>{location.state}선픽이시군요!</h1>
-
-            {StandardImageList()}
+            <h1>선픽이시군요! 요즘 {lane}포지션에서 핫한 챔피언을 추천드릴게요</h1>
+            {console.log(process.env.PUBLIC_URL)}
+            {TitlebarImageList()}
 
         </div>
     )
