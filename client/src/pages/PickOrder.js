@@ -13,6 +13,8 @@ function PickOrder({location, match}) {
           {lane} 포지션을 선택하셨습니다.
         </p>
 
+        <br />
+
 
           <Link to={{pathname:`${match.url}/firstpick`, state: lane}}> 
             <button> 선픽이신가요?</button>

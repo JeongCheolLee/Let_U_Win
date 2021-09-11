@@ -3,36 +3,40 @@ import { makeStyles } from '@material-ui/core/styles';
 import ImageList from '@material-ui/core/ImageList';
 import ImageListItem from '@material-ui/core/ImageListItem';
 import ImageListItemBar from '@material-ui/core/ImageListItemBar';
-import ListSubheader from '@material-ui/core/ListSubheader';
 
 const itemData = [
   {
     img: 'https://github.com/JeongCheolLee/Let_U_Win/blob/main/client/test(temp)/aatrox.jpg?raw=true',
-    title: 'aatrox',
+    title: '아트록스',
+    winrate: '55%'
   }, 
   {
     img: 'https://github.com/JeongCheolLee/Let_U_Win/blob/main/client/test(temp)/ahri.jpg?raw=true',
-    title: 'ahri',
+    title: '아리',
+    winrate: '55%'
   },
   {
     img: 'https://github.com/JeongCheolLee/Let_U_Win/blob/main/client/test(temp)/akali.jpg?raw=true',
-    title: 'akali',
+    title: '아칼리',
+    winrate: '55%'
   },
   {
     img: 'https://github.com/JeongCheolLee/Let_U_Win/blob/main/client/test(temp)/akshan.jpg?raw=true',
-    title: 'akshan',
+    title: '아크샨',
+    winrate: '55%'
   },
   {
     img: 'https://github.com/JeongCheolLee/Let_U_Win/blob/main/client/test(temp)/anivia.jpg?raw=true',
-    title: 'anivia',
+    title: '애니비아',
+    winrate: '55%'
   },
   {
     img: 'https://github.com/JeongCheolLee/Let_U_Win/blob/main/client/test(temp)/Aphelios.jpg?raw=true',
-    title: 'aphelios',
+    title: '아펠리오스',
+    winrate: '55%'
   },
 
 ];
-
 
 
 const useStyles = makeStyles((theme) => ({
@@ -41,17 +45,17 @@ const useStyles = makeStyles((theme) => ({
     flexWrap: 'wrap',
     justifyContent: 'space-around',
     overflow: 'hidden',
-    backgroundColor: theme.palette.background.paper,
+  //  backgroundColor: theme.palette.background.paper,
+    
   },
   imageList: {
-    width: 500,
-    height: 450,
-  },
-  icon: {
-    color: 'rgba(255, 255, 255, 0.54)',
+    width: 700,
+    height: 184,
   },
   title: {
-    fontSize: 'smaller'
+    fontSize: 'smaller',
+    fontFamily: '궁서',
+    fontWeight: 'bold'
   }
 })); 
 
@@ -61,16 +65,15 @@ export default function TitlebarImageList() {
   return (
     <div className={classes.root}>
       <ImageList rowHeight={180} className={classes.imageList} cols={6}>
-        <ImageListItem key="Subheader" cols={6} style={{ height: 'auto' }}>
-          <ListSubheader component="div">Champions</ListSubheader>
-        </ImageListItem>
         {itemData.map((item) => (
           <ImageListItem key={item.img}>
             <img src={item.img} alt={item.title}/>
             <ImageListItemBar 
               title={item.title}
+              subtitle={item.winrate}
               classes={{title:classes.title}}
-              style={{ height: '20px'}}  
+              style={{ height: '40px'}
+              }  
             />
           </ImageListItem>
         ))}
