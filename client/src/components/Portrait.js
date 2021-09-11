@@ -3,7 +3,7 @@ import { Avatar } from 'antd';
 
 
 function Portrait(props) {
-    const imageUrl = "/images/" + props.championName + ".jpg";
+    const imageUrl = "/images/champions/" + props.championName + ".jpg";
 
     // const championImg = require(imageUrl);
 

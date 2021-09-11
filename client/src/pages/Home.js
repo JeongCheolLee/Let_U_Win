@@ -1,7 +1,6 @@
 import {React, useState} from 'react';
 import {Button, Container} from '@material-ui/core';
-
-//test
+import { makeStyles } from '@material-ui/core/styles';
 
 function Home({history}) {
     const [lane, setLane] = useState("none");
@@ -17,6 +16,44 @@ function Home({history}) {
         });
     }
 
+    const useStyles = makeStyles((theme) => ({
+        laneBtn:{
+            width:"100px",
+            height:"100px",
+            margin:"10px",
+            // backgroundColor:"black",
+            padding:"0px",
+            fontSize:"35px",
+            fontWeight:"bold",
+            fontFamily:"궁서",
+        }
+    }))
+
+    const classes = useStyles();
+
+    const lanes = [
+        {
+            ko:"탑",
+            en:"top",
+        },
+        {
+            ko:"정글",
+            en:"jungle",
+        },
+        {
+            ko:"미드",
+            en:"middle",
+        },
+        {
+            ko:"원딜",
+            en:"bottom",
+        },
+        {
+            ko:"서폿",
+            en:"support",
+        },
+    ]
+
     return (
         <div align='center'>
             {/* <div>
@@ -30,11 +67,13 @@ function Home({history}) {
                 </select>
                 <button onClick={btnClickHandler}>OK</button>
             </div> */}
-            <Button>1</Button>
-            <Button>2</Button>
-            <Button>3</Button>
-            <Button>4</Button>
-            <Button>5</Button>
+            {lanes.map((item) => {
+                return (
+                    <Button variant="contained" size="large" className={classes.laneBtn}>
+                        {item.ko}
+                    </Button>    
+                )
+            })}
         </div>
     )
 }
