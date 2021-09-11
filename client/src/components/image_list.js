@@ -93,10 +93,10 @@ export default function TitlebarImageList() {
       {console.log(pick)}
     </div>
 
-    <div style = {classes.title, {marginTop: '20px'}} align = "center">
+    <div className = {classes.title} style = {{marginLeft: '20px', marginTop: '50px', fontSize: '25px'}} align = "center">
       {pick}, 훌륭한 선택의 표본입니다!
       
-      <Link to={{pathname:"/pickorder/firstpick/enemypick", state: pick}}> 
+      <Link to={{pathname:"/enemypick", state: pick}}> 
             <button style = {{marginLeft: '20px'}}> 선택 완료</button>
       </Link>
     </div>
