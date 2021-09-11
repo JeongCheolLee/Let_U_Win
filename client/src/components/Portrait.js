@@ -12,7 +12,7 @@ function Portrait(props) {
     }
 
     return (
-        <a href="#" onClick={preventClick}>
+        <a href="" onClick={preventClick}>
             <Avatar shape="square" size={70} src={imageUrl}/>
         </a>
     )

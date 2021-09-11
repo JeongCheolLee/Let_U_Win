@@ -1,38 +1,7 @@
-import {React, useState, useRef} from 'react';
-import {Button} from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import {React} from 'react';
+import ButtonClickable from '../components/ButtonClickable.js';
 
-function Home({history}) {
-    const [lane, setLane] = useState('none');
-
-    const changeHandler = (e) => {
-        setLane(e.target.value);
-    }
-
-    const btnClickHandler = () => {
-        history.push({
-            pathname:'/pickorder',
-            state:lane
-        });
-    }
-
-    const useStyles = makeStyles((theme) => ({
-        laneBtn:{
-            width:'100px',
-            height:'100px',
-            margin:'10px',
-            // backgroundColor:'black',
-            padding:'0px',
-            fontSize:'35px',
-            fontWeight:'bold',
-            fontFamily:['궁서', '궁서체'],
-        }
-    }))
-
-    const classes = useStyles();
-
-    const btnRef = useRef();
-
+function Home() {
     const lanes = [
         {
             ko:'탑',
@@ -58,22 +27,16 @@ function Home({history}) {
 
     return (
         <div align='center'>
-            {/* <div>
-                <select name='lane' onChange={changeHandler}>
-                    <option value='none' selected>which?</option>
-                    <option value='top'>top</option>
-                    <option value='jungle'>jungle</option>
-                    <option value='mid'>mid</option>
-                    <option value='bottom'>bottom</option>
-                    <option value='supporter'>supporter</option>
-                </select>
-                <button onClick={btnClickHandler}>OK</button>
-            </div> */}
+            <div style={{
+                fontSize:'35px',
+                fontWeight:'bold',
+                fontFamily:['궁서', '궁서체'],
+            }}>
+                ㅇㄷ?
+            </div>
             {lanes.map((item) => {
                 return (
-                    <Button onClick={} variant='contained' size='large' className={classes.laneBtn}>
-                        {item.ko}
-                    </Button>    
+                    <ButtonClickable key={item.en+item.ko} lane={item}/>
                 )
             })}
         </div>
