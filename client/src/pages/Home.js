@@ -1,7 +1,5 @@
 import {React, useState} from 'react';
 
-//test
-
 function Home({history}) {
     const [lane, setLane] = useState("none");
 
