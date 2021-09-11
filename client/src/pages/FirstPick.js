@@ -9,7 +9,7 @@ function FirstPick({location}) {
 
     return (
         <div>
-            <h1>선픽이시군요! 요즘 {lane}포지션에서 핫한 챔피언을 추천드릴게요</h1>
+            <h1>선픽이시군요! <br />요즘 {lane}포지션에서 핫한 챔피언을 추천드릴게요</h1>
             {console.log(process.env.PUBLIC_URL)}
             {TitlebarImageList()}
 

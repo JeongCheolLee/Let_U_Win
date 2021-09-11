@@ -4,9 +4,6 @@ import ImageList from '@material-ui/core/ImageList';
 import ImageListItem from '@material-ui/core/ImageListItem';
 import ImageListItemBar from '@material-ui/core/ImageListItemBar';
 import ListSubheader from '@material-ui/core/ListSubheader';
-import IconButton from '@material-ui/core/IconButton';
-import InfoIcon from '@material-ui/icons/Info';
-
 
 const itemData = [
   {
@@ -33,10 +30,7 @@ const itemData = [
     img: 'https://github.com/JeongCheolLee/Let_U_Win/blob/main/client/test(temp)/Aphelios.jpg?raw=true',
     title: 'aphelios',
   },
-  {
-    img: 'https://github.com/JeongCheolLee/Let_U_Win/blob/main/client/test(temp)/ashe.jpg?raw=true',
-    title: 'ashe',
-  },
+
 ];
 
 
@@ -63,16 +57,15 @@ export default function TitlebarImageList() {
 
   return (
     <div className={classes.root}>
-      <ImageList rowHeight={180} className={classes.imageList}>
+      <ImageList rowHeight={180} className={classes.imageList} cols={6}>
         <ImageListItem key="Subheader" cols={6} style={{ height: 'auto' }}>
           <ListSubheader component="div">Champions</ListSubheader>
         </ImageListItem>
         {itemData.map((item) => (
           <ImageListItem key={item.img}>
-            <img src={item.img} alt={item.title} />
+            <img src={item.img} alt={item.title}/>
             <ImageListItemBar
-              title={item.title}
- 
+              title={item.title} style={{ height: '20px'}}  
             />
           </ImageListItem>
         ))}
