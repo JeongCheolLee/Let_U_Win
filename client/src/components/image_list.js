@@ -50,6 +50,9 @@ const useStyles = makeStyles((theme) => ({
   icon: {
     color: 'rgba(255, 255, 255, 0.54)',
   },
+  title: {
+    fontSize: 'smaller'
+  }
 })); 
 
 export default function TitlebarImageList() {
@@ -64,8 +67,10 @@ export default function TitlebarImageList() {
         {itemData.map((item) => (
           <ImageListItem key={item.img}>
             <img src={item.img} alt={item.title}/>
-            <ImageListItemBar
-              title={item.title} style={{ height: '20px'}}  
+            <ImageListItemBar 
+              title={item.title}
+              classes={{title:classes.title}}
+              style={{ height: '20px'}}  
             />
           </ImageListItem>
         ))}
