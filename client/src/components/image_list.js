@@ -1,8 +1,11 @@
-import React from 'react';
+import {React, useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ImageList from '@material-ui/core/ImageList';
 import ImageListItem from '@material-ui/core/ImageListItem';
 import ImageListItemBar from '@material-ui/core/ImageListItemBar';
+import {useHistory} from "react-router";
+import { Link } from 'react-router-dom';
+
 
 
 const itemData = [
@@ -59,36 +62,24 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-
 export default function TitlebarImageList() {
   const classes = useStyles();
-  
+  const history = useHistory();
+  const [pick, setPick] = useState("____");
 
-  const defaultMessage = (
-    <div >
-      <br />
-      <br />
-      <br />
-      기본메시지입니다.
-    </div>
-  )
-
-  const choice = (arg) =>{
-
-    return(
-      <div style={{fontFamily: '궁서', fontWeight: 'bold', fontSize: '25px'}}>
-        역시, {arg}는 탁월한 선택입니다.
-      </div>
-    );
+  const changeHandler = (e) => {
+    e.preventDefault()
+    setPick(e.target.alt)
   }
 
-
   return (
+  <div>
     <div className={classes.root}>
       <ImageList rowHeight={180} className={classes.imageList} cols={6}>
         {itemData.map((item) => (
           <ImageListItem key={item.img}>
-            <img onClick = { () => choice(item.title)} src={item.img} alt={item.title} style={{cursor: "pointer"}}/>
+            <img onClick = {changeHandler} value = {item.title} src={item.img} alt={item.title} style={{cursor: "pointer"}}>
+            </img>
             <ImageListItemBar 
               title={item.title}
               subtitle={item.winrate}
@@ -106,10 +97,18 @@ export default function TitlebarImageList() {
           </ImageListItem>
         ))}
       </ImageList>
-      {defaultMessage}
+      {console.log(pick)}
     </div>
 
+    <div style = {classes.title, {marginTop: '20px'}} align = "center">
+      {pick}, 훌륭한 선택의 표본입니다!
+      
+      <Link to={{pathname:"/pickorder/firstpick/enemypick", state: pick}}> 
+            <button style = {{marginLeft: '20px'}}> 선택 완료</button>
+      </Link>
+    </div>
+
+
+  </div>
   );
 }
-
-//
