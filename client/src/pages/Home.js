@@ -1,7 +1,7 @@
 import {React} from 'react';
 import ButtonClickable from '../components/ButtonClickable.js';
 
-function Home() {
+function Home({history}) {
     const lanes = [
         {
             ko:'탑',
@@ -36,7 +36,7 @@ function Home() {
             </div>
             {lanes.map((item) => {
                 return (
-                    <ButtonClickable key={item.en+item.ko} lane={item}/>
+                    <ButtonClickable history={history} key={item.en+item.ko} lane={item}/>
                 )
             })}
         </div>
