@@ -3,7 +3,7 @@ import { Avatar } from 'antd';
 
 
 function Portrait(props) {
-    const imageUrl = "/images/" + props.championName + ".jpg";
+    const imageUrl = "/images/champions/" + props.championName + ".jpg";
 
     // const championImg = require(imageUrl);
 
@@ -12,7 +12,7 @@ function Portrait(props) {
     }
 
     return (
-        <a href="#" onClick={preventClick}>
+        <a href="" onClick={preventClick}>
             <Avatar shape="square" size={70} src={imageUrl}/>
         </a>
     )

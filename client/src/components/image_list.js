@@ -87,6 +87,13 @@ export default function TitlebarImageList() {
               style={{ height: '40px'}
               }
             />
+          
+            {/* <ImageListItemBar
+              title={'시발'}
+              classes={{title:classes.bar}}
+              style={{height:'40px', display:'block'}}
+            /> */}
+
           </ImageListItem>
         ))}
       </ImageList>

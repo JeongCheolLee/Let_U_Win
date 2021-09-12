@@ -1,30 +1,44 @@
-import {React, useState} from 'react';
+import {React} from 'react';
+import ButtonClickable from '../components/ButtonClickable.js';
 
 function Home({history}) {
-    const [lane, setLane] = useState("none");
-
-    const changeHandler = (e) => {
-        setLane(e.target.value);
-    }
-
-    const btnClickHandler = () => {
-        history.push({
-            pathname:"/pickorder",
-            state:lane
-        });
-    }
+    const lanes = [
+        {
+            ko:'탑',
+            en:'top',
+        },
+        {
+            ko:'정글',
+            en:'jungle',
+        },
+        {
+            ko:'미드',
+            en:'middle',
+        },
+        {
+            ko:'원딜',
+            en:'bottom',
+        },
+        {
+            ko:'서폿',
+            en:'support',
+        },
+    ]
 
     return (
-        <div>
-            <select name="lane" onChange={changeHandler}>
-                <option value="none" selected>which?</option>
-                <option value="top">top</option>
-                <option value="jungle">jungle</option>
-                <option value="mid">mid</option>
-                <option value="bottom">bottom</option>
-                <option value="supporter">supporter</option>
-            </select>
-            <button onClick={btnClickHandler}>OK</button>
+        <div align='center'>
+            <div style={{
+                fontSize:'35px',
+                fontWeight:'bold',
+                fontFamily:['궁서', '궁서체'],
+            }}>
+                ㅇㄷ?
+            </div>
+            {lanes.map((item) => {
+                return (
+                    <ButtonClickable history={history} key={item.en+item.ko} lane={item}/>
+                )
+            })}
         </div>
     )
 }
