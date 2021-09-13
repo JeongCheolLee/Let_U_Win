@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import ImageList from '@material-ui/core/ImageList';
 import ImageListItem from '@material-ui/core/ImageListItem';
 import ImageListItemBar from '@material-ui/core/ImageListItemBar';
-import itemData from '../data/ItemDataFirst'
+import itemData from '../data/itemDataAll'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
   },
   imageList: {
     width: 700,
-    height: 184,
+    height: 900,
   },
   title: {
     fontSize: 'smaller',
@@ -31,12 +31,12 @@ export default function TitlebarImageList(props) {
 
   const changeHandler = (e) => {
     e.preventDefault()
-    props.getMyPickFromImageList(e.target.alt)
+    props.getMyNewPickFromImageList(e.target.alt)
   }
 
   return (
     <div className={classes.root}>
-      <ImageList rowHeight={180} className={classes.imageList} cols={6}>
+      <ImageList rowHeight={90} className={classes.imageList} cols={6}>
         {itemData.map((item) => (
           <ImageListItem key={item.img}>
             <img onClick = {changeHandler} value = {item.title} src={item.img} alt={item.title} style={{cursor: "pointer"}}>
