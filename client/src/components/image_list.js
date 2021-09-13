@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import ImageList from '@material-ui/core/ImageList';
 import ImageListItem from '@material-ui/core/ImageListItem';
 import ImageListItemBar from '@material-ui/core/ImageListItemBar';
-import {useHistory} from "react-router";
 import { Link } from 'react-router-dom';
 
 
@@ -64,7 +63,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function TitlebarImageList() {
   const classes = useStyles();
-  const history = useHistory();
   const [pick, setPick] = useState("____");
 
   const changeHandler = (e) => {
@@ -87,20 +85,13 @@ export default function TitlebarImageList() {
               style={{ height: '40px'}
               }
             />
-          
-            {/* <ImageListItemBar
-              title={'시발'}
-              classes={{title:classes.bar}}
-              style={{height:'40px', display:'block'}}
-            /> */}
-
           </ImageListItem>
         ))}
       </ImageList>
       {console.log(pick)}
     </div>
 
-    <div style = {classes.title, {marginTop: '20px'}} align = "center">
+    <div className={classes.title} style={{marginLeft: '20px', marginTop: '50px', fontSize: '25px'}} align = "center">
       {pick}, 훌륭한 선택의 표본입니다!
       
       <Link to={{pathname:"/pickorder/firstpick/enemypick", state: pick}}> 

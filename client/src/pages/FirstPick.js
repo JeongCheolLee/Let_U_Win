@@ -19,7 +19,8 @@ function FirstPick({ location }) {
             </div>
 
             <div style = {{marginTop: '20px'}}>
-                {TitlebarImageList()}
+                {/* {TitlebarImageList()} */}
+                <TitlebarImageList />
             </div>
 
         </div>
