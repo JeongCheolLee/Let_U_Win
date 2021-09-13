@@ -24,7 +24,7 @@ function Home({history}) {
             en:'support',
         },
     ]
-
+//
     return (
         <div align='center'>
             <div style={{
