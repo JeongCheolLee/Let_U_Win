@@ -1,10 +1,8 @@
-import { React } from 'react';
+import {React, useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ImageList from '@material-ui/core/ImageList';
 import ImageListItem from '@material-ui/core/ImageListItem';
 import ImageListItemBar from '@material-ui/core/ImageListItemBar';
-import itemData from '../data/itemDataAll'
-
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -15,43 +13,44 @@ const useStyles = makeStyles((theme) => ({
   //  backgroundColor: theme.palette.background.paper,
   },
   imageList: {
-    width: 700,
-    height: 900,
+    width: 560,
+    height: 550,
   },
   title: {
-    fontSize: 'smaller',
+    fontSize: '0.6em',
     fontFamily: ['궁서', '궁서체'],
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   }
 }));
 
 
-export default function TitlebarImageList(props) {
-  const classes = useStyles();
+export default function ImageListHjlee(props) {
+    const classes = useStyles();
+    const itemData = props.filteredChampionsList;
+    const imgOnClickHandler = (e) => {
+    //   console.log(e.target.alt);
+        props.getPickFromImageList(e.target.alt);
+    }
 
-  const changeHandler = (e) => {
-    e.preventDefault()
-    props.getMyNewPickFromImageList(e.target.alt)
-  }
 
-  return (
+
+    return (
+    <div>
     <div className={classes.root}>
-      <ImageList rowHeight={90} className={classes.imageList} cols={6}>
+        <ImageList rowHeight={100} className={classes.imageList} cols={6}>
         {itemData.map((item) => (
-          <ImageListItem key={item.img}>
-            <img onClick = {changeHandler} value = {item.title} src={item.img} alt={item.title} style={{cursor: "pointer"}}>
-            </img>
-            <ImageListItemBar 
-              title={item.title}
-              subtitle={item.winrate}
-              classes={{title:classes.title}}
-              style={{ height: '40px'}
-              }
-            />
-          
-          </ImageListItem>
+            <ImageListItem style={{height:'90px', width:'90px'}} key={item.title_eng}>
+                <img onClick={imgOnClickHandler} src={item.img} alt={item.title} style={{cursor: "pointer", width:'90px'}}/>
+                <ImageListItemBar 
+                    title={item.title}
+                    classes={{title:classes.title}}
+                    style={{ height: '20px', textAlign:'left'}
+                    }
+                />
+            </ImageListItem>
         ))}
-      </ImageList>
+        </ImageList>
     </div>
-  );
+    </div>
+    );
 }
