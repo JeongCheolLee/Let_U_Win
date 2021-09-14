@@ -5,6 +5,7 @@ import itemDataAll from '../data/itemDataAll';
 
 function LastPick({history, match}) {
     const goongseo = {fontWeight:"bold", fontFamily:["궁서","궁서체"]}
+
     const [championsList, setChampionsList] = useState(itemDataAll);
     const [filteredChampionsList, setFilteredChampionsList] = useState([]);
     const [searchText, setSearchText] = useState('');
@@ -12,7 +13,7 @@ function LastPick({history, match}) {
     const [enemyPick, setEnemyPick] = useState('none');
 
     useEffect(() => {
-        console.log("search text has changed!");
+        // console.log("search text has changed!");
         championsList.sort(function(a, b) {
             return a.title < b.title ? -1 : a.title > b.title ? 1 : 0;
         });
