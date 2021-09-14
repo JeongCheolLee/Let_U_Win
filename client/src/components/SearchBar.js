@@ -19,10 +19,8 @@ export default function BasicTextFields(props) {
 
 
     return (
-    <form className={classes.root} noValidate autoComplete="off" onSubmit={(e) => {e.preventDefault();}}>
-        <TextField onChange={textFieldOnChange} id="standard-basic" label="참피온 이름"/>
-        {/* <TextField id="filled-basic" label="Filled" variant="filled" />
-        <TextField id="outlined-basic" label="Outlined" variant="outlined" /> */}
-    </form>
+      <form className={classes.root} noValidate autoComplete="off" onSubmit={(e) => {e.preventDefault();}}>
+          <TextField onChange={textFieldOnChange} id="standard-basic" label={props.label}/>
+      </form>
     );
 }

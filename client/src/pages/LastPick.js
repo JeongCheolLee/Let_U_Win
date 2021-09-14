@@ -3,7 +3,7 @@ import ImageListHjlee from '../components/ImageListHjlee';
 import SearchBar from '../components/SearchBar';
 import itemDataAll from '../data/itemDataAll';
 
-function LastPick() {
+function LastPick({history, match}) {
     const goongseo = {fontWeight:"bold", fontFamily:["궁서","궁서체"]}
     const [championsList, setChampionsList] = useState(itemDataAll);
     const [filteredChampionsList, setFilteredChampionsList] = useState([]);
@@ -45,6 +45,21 @@ function LastPick() {
         setSearchText(text);
     }, [])
 
+    const onClickCancelBtn = () => {
+        setMyPick('none');
+        setEnemyPick('none');
+    }
+
+    const moveToDetail = () => {
+        history.push({
+            pathname:`${match.url}/detail`,
+            state:{
+                myPick:myPick,
+                enemyPick:enemyPick,
+            }
+        })
+    }
+
     return (
         <div align="center">
             <h1 style={{...goongseo}} >
@@ -54,22 +69,24 @@ function LastPick() {
             {(myPick === 'none') && 
             (
                 <div>
-                    <SearchBar getSearchTextFromSearchBar={getSearchTextFromSearchBar}/>
+                    <SearchBar label="나의 픽" getSearchTextFromSearchBar={getSearchTextFromSearchBar}/>
                     <ImageListHjlee filteredChampionsList={filteredChampionsList} getPickFromImageList={getMyPickFromImageList}/>
                 </div>
             )}
             <br/>
-            <div>나으 픽 : {myPick}</div>
+            <div>나으 픽 : {myPick}<button onClick={onClickCancelBtn} style={{marginLeft:'25px'}}>cancel</button></div>
             <br/>
             {(myPick !== 'none') && (enemyPick === 'none') &&
             (
                 <div>
-                    <SearchBar getSearchTextFromSearchBar={getSearchTextFromSearchBar}/>
+                    <SearchBar label="상대 픽" getSearchTextFromSearchBar={getSearchTextFromSearchBar}/>
                     <ImageListHjlee filteredChampionsList={filteredChampionsList} getPickFromImageList={getEnemyPickFromImageList}/>
                 </div>
             )}
             <br/>
-            <div>상대 픽 : {enemyPick}</div>
+            <div>상대 픽 : {enemyPick}<button onClick={onClickCancelBtn} style={{marginLeft:'25px'}}>cancel</button></div>
+            <br/>
+            <button onClick={moveToDetail}>확정!</button>
         </div>
     )
 }
