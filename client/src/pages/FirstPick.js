@@ -1,6 +1,6 @@
 import {React, useState, useCallback} from 'react';
 import TitlebarImageList from '../components/image_list'
-import TitlebarImageListForAll from '../components/image_list_all'
+
 
 function FirstPick({ location }) {
     const lane = location.state;
@@ -34,10 +34,6 @@ function FirstPick({ location }) {
             <div style = {{...goongseo, fontSize:'22px', marginTop: '50px'}}> 
                 이곳에 플레이 하고 싶은 챔피언이 없으신가요?
                 <button style = {{marginLeft: '20px'}}> 네 </button>
-            </div>
-
-            <div>
-                <TitlebarImageListForAll/>
             </div>
 
         </div>
