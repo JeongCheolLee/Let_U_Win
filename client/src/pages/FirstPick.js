@@ -7,7 +7,7 @@ import itemDataAll from '../data/itemDataAll';
 
 
 
-function FirstPick({ location }) {
+function FirstPick({history, match, location }) {
     const lane = location.state;
     const goongseo = {fontWeight:"bold", fontFamily:["궁서","궁서체"]}
 
@@ -16,7 +16,7 @@ function FirstPick({ location }) {
     const [searchText, setSearchText] = useState('')
 
     const [myPick, setMyPick] = useState('____');
-    const [altPick, setAltPick] = useState('____');
+    const [enemyPick, setEnemyPick] = useState('____');
 
 
     useEffect(() => {
@@ -45,14 +45,24 @@ function FirstPick({ location }) {
 
     const getMyPickFromImageList = useCallback((champ) => {
         setMyPick(champ);
+        setSearchText('');
         
     }, [])
 
-    const getAltPickFromImageList = useCallback((champ) => {
-        setAltPick(champ);
+    const getEnemyPickFromImageList = useCallback((champ) => {
+        setEnemyPick(champ);
         setSearchText('');
     }, [])
 
+    const moveToDetail = () => {
+        history.push({
+            pathname:`${match.url}/detail`,
+            state:{
+                myPick:myPick,
+                enemyPick:enemyPick,
+            }
+        })
+    }
 
 
     return (
@@ -70,28 +80,58 @@ function FirstPick({ location }) {
                 <TitlebarImageList getMyPickFromImageList={getMyPickFromImageList}/>
 
                 <div style = {{...goongseo, marginLeft: '20px', marginTop: '50px', fontSize: '25px'}} align = "center">
-                    {myPick}, 훌륭한 선택의 표본입니다. <button style = {{fontSize: '15px',marginLeft: '70px'}}> 선택 완료 </button>
+                    {myPick}, 훌륭한 선택의 표본입니다.
                 </div>
 
             </div>
 
-            <div style = {{...goongseo, fontSize:'22px', marginTop: '50px'}}> 
-                이곳에 플레이 하고 싶은 챔피언이 없으신가요?
+            <div style = {{...goongseo, fontSize:'20px', marginTop: '70px'}}> 
+                선택을 완료 하셨다면 ->
 
-              <Scroll to="altPick" style = {{marginLeft: '50px', color: '#000000' }} smooth={true}>네</Scroll>
+              <Scroll to="enemyPick" style = {{marginLeft: '30px', color: '#000000', fontSize:'17px',background: '#efefef' }} smooth={true} duration = {400}>여기를 클릭해주세요</Scroll>
             </div>
 
-            <div id = "altPick" style = {{marginTop: '200px'}}>
-                <p style = {{...goongseo, fontSize:'22px', marginTop: '50px'}}> 
+            <div style = {{...goongseo, fontSize:'20px', marginTop: '50px', marginBottom: '800px'}}> 
+                다른 챔피언을 선택하시려면 ->
+
+              <Scroll to="altPick" style = {{marginLeft: '30px', color: '#000000', fontSize:'17px',background: '#efefef' }} smooth={true} duration = {400}>여기를 클릭해주세요</Scroll>
+            </div>
+
+            <div id = "altPick">
+                <p style = {{...goongseo, fontSize:'22px', marginTop: '100px'}}> 
                     플레이 하고 싶은 챔피언을 클릭해주세요!
                 </p>
 
-                <SearchBar label="나의 픽" getSearchTextFromSearchBar={getSearchTextFromSearchBar}/>
-                <ImageListAll filteredChampionsList={filteredChampionsList} getAltPickFromImageList={getAltPickFromImageList}/>
+                <SearchBar label="이곳에서 검색하세요!" getSearchTextFromSearchBar={getSearchTextFromSearchBar}/>
+                <ImageListAll filteredChampionsList={filteredChampionsList} getPickFromImageList={getMyPickFromImageList}/>
 
-                <div style = {{...goongseo, marginLeft: '20px', marginTop: '50px', fontSize: '25px'}} align = "center">
-                    {altPick}, 역시 괜찮은 픽이죠! 
+                <div style = {{...goongseo, marginLeft: '20px', marginTop: '100px', fontSize: '25px', marginBottom: '20px'}} align = "center">
+                    {myPick}, 역시 괜찮은 픽이죠! <br />
                 </div>
+
+                <div style = {{...goongseo, fontSize:'20px', marginTop: '20px',  marginBottom: '500px'}}> 
+                    플레이 하실 챔피언이 {myPick}, 맞으시다면 ->
+                <Scroll to="enemyPick" style = {{marginLeft: '30px', color: '#000000', fontSize:'17px',background: '#efefef' }} smooth={true} duration = {400}>여기를 클릭해주세요</Scroll>
+                </div>
+            </div>
+
+            <div id = "enemyPick">
+                <p style = {{...goongseo, fontSize:'22px', marginTop: '50px'}}> 
+                    상대방 픽을 알려주시면 상성을 분석해드릴게요!
+                </p>
+
+                <SearchBar label="이곳에서 검색하세요!" getSearchTextFromSearchBar={getSearchTextFromSearchBar}/>
+                <ImageListAll filteredChampionsList={filteredChampionsList} getPickFromImageList={getEnemyPickFromImageList}/>
+
+                <div style = {{...goongseo, marginLeft: '20px', marginTop: '50px', fontSize: '25px', marginBottom: '100px'}} align = "center">
+                    상대의 픽은 {enemyPick}! 아래의 선택 완료 버튼을 눌러주시면 분석을 시작하겠습니다!
+                </div>
+
+                <p style={{...goongseo, fontSize: "20px"}}>
+                    당신의 픽 : {myPick} <br style={{marginRight: "70px"}}/>
+                    상대의 픽 : {enemyPick} <button onClick={moveToDetail} style = {{fontSize: '20px'}}>선택 완료!</button>
+                            
+                </p>
             </div>
 
         </div>
