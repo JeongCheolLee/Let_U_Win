@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
   //  backgroundColor: theme.palette.background.paper,
   },
   imageList: {
-    width: 560,
+    width: 700,
     height: 550,
   },
   title: {
@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function ImageListHjlee(props) {
+export default function ImageListAll (props) {
     const classes = useStyles();
     const itemData = props.filteredChampionsList;
     const imgOnClickHandler = (e) => {
@@ -33,24 +33,23 @@ export default function ImageListHjlee(props) {
     }
 
 
-
     return (
-    <div>
-    <div className={classes.root}>
+      <div className={classes.root}>
         <ImageList rowHeight={100} className={classes.imageList} cols={6}>
-        {itemData.map((item) => (
-            <ImageListItem style={{height:'90px', width:'90px'}} key={item.title_eng}>
-                <img onClick={imgOnClickHandler} src={item.img} alt={item.title} style={{cursor: "pointer", width:'90px'}}/>
-                <ImageListItemBar 
-                    title={item.title}
-                    classes={{title:classes.title}}
-                    style={{ height: '20px', textAlign:'left'}
-                    }
-                />
+          {itemData.map((item) => (
+            <ImageListItem key={item.img}>
+              <img onClick = {imgOnClickHandler} value = {item.title} src={item.img} alt={item.title} style={{cursor: "pointer"}}>
+              </img>
+              <ImageListItemBar 
+                title={item.title}
+                classes={{title:classes.title}}
+                style={{ height: '20px'}
+                }
+              />
+            
             </ImageListItem>
-        ))}
+          ))}
         </ImageList>
-    </div>
-    </div>
+      </div>
     );
-}
+  }
