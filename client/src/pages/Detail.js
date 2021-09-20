@@ -1,9 +1,14 @@
 import React from 'react'
 
-function Detail() {
+function Detail({location}) {
     return (
         <div>
-            detaildetaildetaildetaildetaildetaildetaildetaildetaildetaildetaildetaildetaildetail
+            상세페이지
+            <br/>
+            내픽:{location.state.myPick}
+            <br/>
+            상대픽:{location.state.enemyPick}
+            <br/>
         </div>
     )
 }

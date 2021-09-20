@@ -86,13 +86,13 @@ function FirstPick({history, match, location }) {
             </div>
 
             <div style = {{...goongseo, fontSize:'20px', marginTop: '70px'}}> 
-                선택을 완료 하셨다면 ->
+                선택을 완료 하셨다면 -{'>'}
 
               <Scroll to="enemyPick" style = {{marginLeft: '30px', color: '#000000', fontSize:'17px',background: '#efefef' }} smooth={true} duration = {600}>여기를 클릭해주세요</Scroll>
             </div>
 
             <div style = {{...goongseo, fontSize:'20px', marginTop: '50px', marginBottom: '800px'}}> 
-                다른 챔피언을 선택하시려면 ->
+                다른 챔피언을 선택하시려면 -{'>'}
 
               <Scroll to="altPick" style = {{marginLeft: '30px', color: '#000000', fontSize:'17px',background: '#efefef' }} smooth={true} duration = {400}>여기를 클릭해주세요</Scroll>
             </div>
@@ -110,7 +110,7 @@ function FirstPick({history, match, location }) {
                 </div>
 
                 <div style = {{...goongseo, fontSize:'20px', marginTop: '20px',  marginBottom: '500px'}}> 
-                    플레이 하실 챔피언이 {myPick}, 맞으시다면 ->
+                    플레이 하실 챔피언이 {myPick}, 맞으시다면 -{'>'}
                 <Scroll to="enemyPick" style = {{marginLeft: '30px', color: '#000000', fontSize:'17px',background: '#efefef' }} smooth={true} duration = {400}>여기를 클릭해주세요</Scroll>
                 </div>
             </div>
