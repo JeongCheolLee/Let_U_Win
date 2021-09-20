@@ -88,7 +88,7 @@ function FirstPick({history, match, location }) {
             <div style = {{...goongseo, fontSize:'20px', marginTop: '70px'}}> 
                 선택을 완료 하셨다면 ->
 
-              <Scroll to="enemyPick" style = {{marginLeft: '30px', color: '#000000', fontSize:'17px',background: '#efefef' }} smooth={true} duration = {400}>여기를 클릭해주세요</Scroll>
+              <Scroll to="enemyPick" style = {{marginLeft: '30px', color: '#000000', fontSize:'17px',background: '#efefef' }} smooth={true} duration = {600}>여기를 클릭해주세요</Scroll>
             </div>
 
             <div style = {{...goongseo, fontSize:'20px', marginTop: '50px', marginBottom: '800px'}}> 
