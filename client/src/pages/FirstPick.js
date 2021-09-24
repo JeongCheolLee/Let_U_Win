@@ -11,7 +11,7 @@ function FirstPick({history, match, location }) {
     const lane = location.state;
     const goongseo = {fontWeight:"bold", fontFamily:["궁서","궁서체"]}
 
-    const [championsList, setChampionsList] = useState(itemDataAll)
+    const [championsList, ] = useState(itemDataAll)
     const [filteredChampionsList, setFilteredChampionsList] = useState([])
     const [searchText, setSearchText] = useState('')
 
@@ -27,7 +27,7 @@ function FirstPick({history, match, location }) {
         if(searchText !== '') {
             setFilteredChampionsList((prevState) => {
                 let temp = [];
-                championsList.map((item) => {
+                championsList.forEach((item) => {
                     if(item.title.includes(searchText)) {
                         temp.push(item);
                     }
@@ -37,7 +37,7 @@ function FirstPick({history, match, location }) {
         } else {
             setFilteredChampionsList(championsList.slice());
         }
-    }, [searchText])
+    }, [searchText,championsList])
 
     const getSearchTextFromSearchBar = useCallback((text) => {
         setSearchText(text);
@@ -129,7 +129,7 @@ function FirstPick({history, match, location }) {
 
                 <p style={{...goongseo, fontSize: "20px"}}>
                     당신의 픽 : {myPick} <br style={{marginRight: "70px"}}/>
-                    상대의 픽 : {enemyPick} <button onClick={moveToDetail} style = {{fontSize: '20px'}}>선택 완료!</button>
+                    상대의 픽 : {enemyPick} <button onClick={moveToDetail} style = {{fontSize: '20px', position: 'absolute', left:'1000px'}}>선택 완료!</button>
                             
                 </p>
             </div>
