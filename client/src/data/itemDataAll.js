@@ -1,4 +1,3 @@
-
 const itemData = [
     {
       img: '/images/champions/aatrox.jpg',
@@ -278,7 +277,7 @@ const itemData = [
     },
     {
       img: '/images/champions/jayce.jpg',
-      title: '탈리야',
+      title: '제이스',
       title_eng: 'jayce',
       winrate: '55%'
     },
@@ -860,7 +859,7 @@ const itemData = [
     },
     {
       img: '/images/champions/xeratth.jpg',
-      title: '탈리야',
+      title: '제라스',
       title_eng: 'xeratth',
       winrate: '55%'
     },
