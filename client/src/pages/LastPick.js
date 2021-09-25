@@ -69,13 +69,21 @@ function LastPick({history, match}) {
             </h1>
             {(myPick === 'none') && 
             (
-                <div>
-                    <SearchBar label="나의 픽" getSearchTextFromSearchBar={getSearchTextFromSearchBar}/>
-                    <ImageListHjlee filteredChampionsList={filteredChampionsList} getPickFromImageList={getMyPickFromImageList}/>
+                <div style={{display:'flex'}}>
+                    <div align="left">
+                        <SearchBar label="나의 픽" getSearchTextFromSearchBar={getSearchTextFromSearchBar}/>
+                        <ImageListHjlee filteredChampionsList={filteredChampionsList} getPickFromImageList={getMyPickFromImageList}/>
+                    </div>
+                    <div>
+                        <img src='/images/lanes/jungle_icon.png'></img>
+                    </div>
                 </div>
             )}
             <br/>
-            <div>나으 픽 : {myPick}<button onClick={onClickCancelBtn} style={{marginLeft:'25px'}}>cancel</button></div>
+            <div>
+                나으 픽 : {myPick}
+                <button onClick={onClickCancelBtn} style={{marginLeft:'25px'}}>cancel</button>
+            </div>
             <br/>
             {(myPick !== 'none') && (enemyPick === 'none') &&
             (
@@ -85,7 +93,10 @@ function LastPick({history, match}) {
                 </div>
             )}
             <br/>
-            <div>상대 픽 : {enemyPick}<button onClick={onClickCancelBtn} style={{marginLeft:'25px'}}>cancel</button></div>
+            <div>
+                상대 픽 : {enemyPick}
+                <button onClick={onClickCancelBtn} style={{marginLeft:'25px'}}>cancel</button>
+            </div>
             <br/>
             <button onClick={moveToDetail}>확정!</button>
         </div>
