@@ -1,11 +1,9 @@
-import React from 'react'
+import {React, useState } from 'react'
 import { Link } from 'react-router-dom'
 
-
 function PickOrder({location, match}) {
-
     const lane = location.state
-
+    
     return (
       <div>
         <h1>Let U Win</h1>
@@ -20,8 +18,6 @@ function PickOrder({location, match}) {
           <Link to={`${match.url}/lastpick`}>
             <button> 후픽이신가요?</button>
           </Link>
-          
-
       </div>
     )
 }
