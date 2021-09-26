@@ -720,7 +720,7 @@ const itemData = [
       winrate: '55%'
     },
     {
-      img: '/images/champions/ialiyah.jpg',
+      img: '/images/champions/taliyah.jpg',
       title: '탈리야',
       title_eng: 'taliyah',
       winrate: '55%'
