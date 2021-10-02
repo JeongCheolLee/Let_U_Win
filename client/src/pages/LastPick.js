@@ -1,27 +1,42 @@
-import {React, useState, useCallback, useEffect} from 'react';
+import {React, useState, useRef, useCallback, useEffect} from 'react';
 import ImageListHjlee from '../components/ImageListHjlee';
 import SearchBar from '../components/SearchBar';
-import itemDataAll from '../data/itemDataAll';
+import axios from 'axios';
+// import itemDataAll from '../data/itemDataAll';
 
 function LastPick({history, match}) {
     const goongseo = {fontWeight:"bold", fontFamily:["궁서","궁서체"]}
 
-    const [championsList, setChampionsList] = useState(itemDataAll);
+    const [championsList, setChampionsList] = useState([]);
     const [filteredChampionsList, setFilteredChampionsList] = useState([]);
     const [searchText, setSearchText] = useState('');
     const [myPick, setMyPick] = useState('none');
     const [enemyPick, setEnemyPick] = useState('none');
 
     useEffect(() => {
-        // console.log("search text has changed!");
-        championsList.sort(function(a, b) {
-            return a.title < b.title ? -1 : a.title > b.title ? 1 : 0;
-        });
+        axios.get('http://localhost:3001/champions/all').then((res) => {
+            let list = res.data.list;
+            list.sort(function(a, b) {
+                return a.name < b.name ? -1 : a.name > b.name ? 1 : 0;
+            });
+            setChampionsList([...list.slice()]);
+            console.log("3");
+        }).catch((err) => {
+            console.log(err);
+        })
+        console.log("1");
+    }, []);
+
+    useEffect(() => {
         if(searchText !== '') {
             setFilteredChampionsList((prevState) => {
                 let temp = [];
                 championsList.map((item) => {
-                    if(item.title.includes(searchText)) {
+                    // 포함하면
+                    // if(item.name.includes(searchText)) {
+                    //     temp.push(item)
+                    // }
+                    if(item.name.startsWith(searchText)) {
                         temp.push(item);
                     }
                 })
@@ -30,7 +45,8 @@ function LastPick({history, match}) {
         } else {
             setFilteredChampionsList(championsList.slice());
         }
-    }, [searchText])
+        console.log("2");
+    }, [searchText, championsList])
 
     const getMyPickFromImageList = useCallback((champ) => {
         setMyPick(champ);
@@ -69,14 +85,10 @@ function LastPick({history, match}) {
             </h1>
             {(myPick === 'none') && 
             (
-                <div style={{display:'flex'}}>
-                    <div align="left">
-                        <SearchBar label="나의 픽" getSearchTextFromSearchBar={getSearchTextFromSearchBar}/>
-                        <ImageListHjlee filteredChampionsList={filteredChampionsList} getPickFromImageList={getMyPickFromImageList}/>
-                    </div>
-                    <div>
-                        <img src='/images/lanes/jungle_icon.png'></img>
-                    </div>
+                <div>
+                    <SearchBar label="나의 픽" getSearchTextFromSearchBar={getSearchTextFromSearchBar}/>
+                    <ImageListHjlee filteredChampionsList={filteredChampionsList} getPickFromImageList={getMyPickFromImageList}/>
+                
                 </div>
             )}
             <br/>

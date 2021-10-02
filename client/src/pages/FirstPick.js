@@ -1,5 +1,5 @@
 import {React, useState, useCallback, useEffect} from 'react';
-import {Link as Scroll} from 'react-scroll'
+import {Link as Scroll} from 'react-scroll';
 import TitlebarImageList from '../components/image_list'
 import ImageListAll from '../components/image_list_all'
 import SearchBar from '../components/SearchBar';

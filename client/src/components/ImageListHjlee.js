@@ -1,4 +1,4 @@
-import {React, useState} from 'react';
+import {React, useRef} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ImageList from '@material-ui/core/ImageList';
 import ImageListItem from '@material-ui/core/ImageListItem';
@@ -26,23 +26,22 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ImageListHjlee(props) {
     const classes = useStyles();
+    const url = useRef("http://ddragon.leagueoflegends.com/cdn/11.19.1/img/champion/");
     const itemData = props.filteredChampionsList;
     const imgOnClickHandler = (e) => {
     //   console.log(e.target.alt);
         props.getPickFromImageList(e.target.alt);
     }
 
-
-
     return (
     <div>
     <div className={classes.root}>
-        <ImageList rowHeight={100} className={classes.imageList} cols={6}>
+        <ImageList varient="quilted" rowHeight={100} className={classes.imageList} cols={6}>
         {itemData.map((item) => (
-            <ImageListItem style={{height:'90px', width:'90px'}} key={item.title_eng}>
-                <img onClick={imgOnClickHandler} src={item.img} alt={item.title} style={{cursor: "pointer", width:'90px'}}/>
-                <ImageListItemBar 
-                    title={item.title}
+            <ImageListItem style={{height:'90px', width:'90px'}} key={item.id}>
+                <img onClick={imgOnClickHandler} src={"http://ddragon.leagueoflegends.com/cdn/11.19.1/img/champion/"+item.image.full} alt={item.name} style={{cursor: "pointer", width:'90px'}}/>
+                <ImageListItemBar
+                    title={item.name}
                     classes={{title:classes.title}}
                     style={{ height: '20px', textAlign:'left'}
                     }

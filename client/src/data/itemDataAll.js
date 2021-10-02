@@ -1,6 +1,6 @@
 const itemData = [
     {
-      img: '/images/champions/aatrox.jpg',
+      img: 'http://ddragon.leagueoflegends.com/cdn/11.19.1/img/champion/Aatrox.png',
       title: '아트록스',
       title_eng: 'aatrox',
       winrate: '55%'
