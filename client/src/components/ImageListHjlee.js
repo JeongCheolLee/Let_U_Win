@@ -15,11 +15,15 @@ const useStyles = makeStyles((theme) => ({
   imageList: {
     width: 560,
     height: 550,
+    alignContent:'flex-start',
   },
   title: {
     fontSize: '0.6em',
     fontFamily: ['궁서', '궁서체'],
-    fontWeight: 'bold',
+    fontWeight: 'bold'
+  },
+  titleWrap: {
+    margin:'8px'
   }
 }));
 
@@ -34,22 +38,20 @@ export default function ImageListHjlee(props) {
     }
 
     return (
-    <div>
     <div className={classes.root}>
-        <ImageList varient="quilted" rowHeight={100} className={classes.imageList} cols={6}>
+        <ImageList variant="quilted" rowHeight='auto' className={classes.imageList} cols={6}>
         {itemData.map((item) => (
             <ImageListItem style={{height:'90px', width:'90px'}} key={item.id}>
                 <img onClick={imgOnClickHandler} src={"http://ddragon.leagueoflegends.com/cdn/11.19.1/img/champion/"+item.image.full} alt={item.name} style={{cursor: "pointer", width:'90px'}}/>
                 <ImageListItemBar
                     title={item.name}
-                    classes={{title:classes.title}}
-                    style={{ height: '20px', textAlign:'left'}
+                    classes={{title:classes.title, titleWrap:classes.titleWrap}}
+                    style={{ height: '30px', textAlign:'left'}
                     }
                 />
             </ImageListItem>
         ))}
         </ImageList>
-    </div>
     </div>
     );
 }
