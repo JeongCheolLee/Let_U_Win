@@ -7,6 +7,9 @@ const {Champion} = require('./models/Champion');
 const port = 3001;
 const cors = require('cors');
 
+//routes
+var statisticRouter = require('./routes/statistic');
+
 mongoose.connect(mongoURI,{
     // useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false
 }).then(() => console.log('MongoDB Connected...'))
@@ -14,18 +17,8 @@ mongoose.connect(mongoURI,{
 
 
 app.use(cors({ origin: ["http://localhost:3000", "https://web.postman.co"]}));
-app.get('/', (req, res) => {
-    var test1 = new Test({name:"lee", age:10});
-    test1.save((err, doc) => {
-        if(err) return res.json({success:false, err});
-        return res.status(200).json({
-            success:true,
-            test:'good',
-        })
-    })
-})
 
-app.get('/champions/all', (req, res) => {
+app.get('/images/champions/all', (req, res) => {
     // qeury로 조회, 찾을 field, 연산자 모두 문자열 형식으로 입력해야됨
     Champion.find((err, docs) => {
         if(err) return res.json({success:false, err})
@@ -36,6 +29,8 @@ app.get('/champions/all', (req, res) => {
         });
     })
 })
+
+app.use('/statistic', statisticRouter);
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)

@@ -14,7 +14,7 @@ function LastPick({history, match}) {
     const [enemyPick, setEnemyPick] = useState('none');
 
     useEffect(() => {
-        axios.get('http://localhost:3001/champions/all').then((res) => {
+        axios.get('http://localhost:3001/images/champions/all').then((res) => {
             let list = res.data.list;
             list.sort(function(a, b) {
                 return a.name < b.name ? -1 : a.name > b.name ? 1 : 0;

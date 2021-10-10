@@ -5,13 +5,6 @@ import ImageListItem from '@material-ui/core/ImageListItem';
 import ImageListItemBar from '@material-ui/core/ImageListItemBar';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
-    overflow: 'hidden',
-  //  backgroundColor: theme.palette.background.paper,
-  },
   imageList: {
     width: 560,
     height: 550,
@@ -29,8 +22,9 @@ const useStyles = makeStyles((theme) => ({
 
 
 export default function ImageListHjlee(props) {
-    const classes = useStyles();
-    const url = useRef("http://ddragon.leagueoflegends.com/cdn/11.19.1/img/champion/");
+  const classes = useStyles();
+  
+  const url = useRef("http://ddragon.leagueoflegends.com/cdn/11.19.1/img/champion/");
     const itemData = props.filteredChampionsList;
     const imgOnClickHandler = (e) => {
     //   console.log(e.target.alt);
@@ -38,7 +32,7 @@ export default function ImageListHjlee(props) {
     }
 
     return (
-    <div className={classes.root}>
+    <div>
         <ImageList variant="quilted" rowHeight='auto' className={classes.imageList} cols={6}>
         {itemData.map((item) => (
             <ImageListItem style={{height:'90px', width:'90px'}} key={item.id}>
