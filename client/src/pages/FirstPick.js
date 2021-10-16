@@ -28,7 +28,7 @@ function FirstPick({history, match, location }) {
             setFilteredChampionsList((prevState) => {
                 let temp = [];
                 championsList.forEach((item) => {
-                    if(item.title.includes(searchText)) {
+                    if(item.title.startsWith(searchText)) {
                         temp.push(item);
                     }
                 })

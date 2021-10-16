@@ -15,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
   imageList: {
     width: 700,
     height: 550,
+    alignContent:'flex-start',
   },
   title: {
     fontSize: '0.6em',
