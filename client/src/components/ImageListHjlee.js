@@ -27,13 +27,12 @@ export default function ImageListHjlee(props) {
   const url = useRef("http://ddragon.leagueoflegends.com/cdn/11.19.1/img/champion/");
     const itemData = props.filteredChampionsList;
     const imgOnClickHandler = (e) => {
-    //   console.log(e.target.alt);
         props.getPickFromImageList(e.target.alt);
     }
 
     return (
     <div>
-        <ImageList variant="quilted" rowHeight='auto' className={classes.imageList} cols={6}>
+        <ImageList rowHeight='auto' className={classes.imageList} cols={6}>
         {itemData.map((item) => (
             <ImageListItem style={{height:'90px', width:'90px'}} key={item.id}>
                 <img onClick={imgOnClickHandler} src={"http://ddragon.leagueoflegends.com/cdn/11.19.1/img/champion/"+item.image.full} alt={item.name} style={{cursor: "pointer", width:'90px'}}/>
