@@ -3,8 +3,6 @@ from pymongo import MongoClient
 mongodb_URI = "mongodb://localhost:27017/"
 client = MongoClient(mongodb_URI)
 
-#client = MongoClient("3.35.222.47",27017)
-#db = client['main']
 
 
 #데이터베이스 확인
