@@ -2,7 +2,6 @@ import requests
 from urllib.parse import urlparse
 import time
 
-api_key = 'RGAPI-5274f047-ce83-4884-aed4-61d158c09582'
 
 def getChallengerUser():
     url = 'https://kr.api.riotgames.com/lol/league/v4/challengerleagues/by-queue/RANKED_SOLO_5x5?api_key='+api_key
