@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 'smaller',
     fontFamily: ['궁서', '궁서체'],
     fontWeight: 'bold'
+    
   }
 }));
 
