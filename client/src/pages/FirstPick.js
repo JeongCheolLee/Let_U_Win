@@ -45,10 +45,49 @@ function FirstPick({ history, match, location }) {
     setSearchText('');
   }, []);
 
+  useEffect(() => {
+    // console.log("search text has changed!");
+    championsList.sort(function (a, b) {
+      return a.title < b.title ? -1 : a.title > b.title ? 1 : 0;
+    });
+    if (searchText !== '') {
+      setFilteredChampionsList((prevState) => {
+        let temp = [];
+        championsList.forEach((item) => {
+          if (item.title.startsWith(searchText)) {
+            temp.push(item);
+          }
+        });
+        return temp.slice();
+      });
+    } else {
+      setFilteredChampionsList(championsList.slice());
+    }
+  }, [searchText, championsList]);
+
+  const getSearchTextFromSearchBar = useCallback((text) => {
+    setSearchText(text);
+  }, []);
+
+  const getMyPickFromImageList = useCallback((champ) => {
+    setMyPick(champ);
+    setSearchText('');
+  }, []);
+
   const getEnemyPickFromImageList = useCallback((champ) => {
     setEnemyPick(champ);
     setSearchText('');
   }, []);
+
+  const moveToDetail = () => {
+    history.push({
+      pathname: `${match.url}/detail`,
+      state: {
+        myPick: myPick,
+        enemyPick: enemyPick,
+      },
+    });
+  };
 
   const moveToDetail = () => {
     history.push({
@@ -318,16 +357,6 @@ function FirstPick({ history, match, location }) {
             </p>
           </div>
         </div>
-        <p style={{ ...goongseo, fontSize: '20px' }}>
-          당신의 픽 : {myPick} <br style={{ marginRight: '70px' }} />
-          상대의 픽 : {enemyPick}{' '}
-          <button
-            onClick={moveToDetail}
-            style={{ fontSize: '20px', position: 'absolute', left: '1000px' }}
-          >
-            선택 완료!
-          </button>
-        </p>
       </div>
     </div>
   );
