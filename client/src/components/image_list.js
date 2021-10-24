@@ -20,14 +20,8 @@ const useStyles = makeStyles((theme) => ({
   title: {
     fontSize: 'smaller',
     fontFamily: ['궁서', '궁서체'],
-<<<<<<< HEAD
-    fontWeight: 'bold'
-    
-  }
-=======
     fontWeight: 'bold',
   },
->>>>>>> lastpick
 }));
 
 export default function TitlebarImageList(props) {
