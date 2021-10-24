@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/JeongCheolLee/Let_U_Win/issues"
   },
-  "homepage": "https://github.com/JeongCheolLee/Let_U_Win#readme"
+  "homepage": "https://github.com/JeongCheolLee/Let_U_Win#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^6.0.7"
+  }
 }
