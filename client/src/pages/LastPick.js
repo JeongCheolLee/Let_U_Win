@@ -15,7 +15,7 @@ function LastPick({ history, match }) {
 
   useEffect(() => {
     axios
-      .get('http://localhost:3001/images/champions/all')
+      .get('http://localhost:3001/champions/all')
       .then((res) => {
         let list = res.data.list;
         list.sort(function (a, b) {
