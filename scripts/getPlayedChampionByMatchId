@@ -1,0 +1,37 @@
+from pymongo import MongoClient
+
+mongodb_URI = ""
+client = MongoClient(mongodb_URI)
+
+
+#db 연결 확인
+print(client.list_database_names())
+
+db = client['main']
+collection = db['match']
+
+matches = collection.find()
+
+playedChamp = {}
+
+c = 0
+for match in matches:
+    try:
+        c += 1
+        if c % 100 == 0:
+            print(str(c) + ' has finised..')
+        champ = {}
+        for i in match['info']['participants']:
+            champ[i['participantId']] = i['championName']
+        playedChamp[match['metadata']['matchId']] = champ
+    except:
+        print(str(c)+'!!!!!!!!!!!!!!!!!!!error!!!!!!!!!!!!!!!!!!!')
+        pass
+    
+print(c)
+
+collection = db['playedChamp']
+collection.insert_one(playedChamp)
+
+
+
