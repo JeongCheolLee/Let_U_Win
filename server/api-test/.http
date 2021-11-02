@@ -1,1 +1,1 @@
-GET http://localhost:3001/statistic/winrate/Chogath
+GET http://localhost:3001/statistic/pickrate/Annie/middle
