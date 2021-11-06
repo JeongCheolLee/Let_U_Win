@@ -1,5 +1,6 @@
 const { WinRate } = require('../models/WinRate');
 const { BanRate } = require('../models/BanRate');
+const { Match } = require('../models/Match');
 const express = require('express');
 const router = express.Router();
 
@@ -25,11 +26,19 @@ router.get('/pickrate/:id/:lane', (req, res) => {
     .select(req.params.lane)
     .exec((err, data) => {
       if (err) return res.json({ success: false, err });
-      console.log(data);
-      res.status(200).json({
-        success: true,
-        playCount: data.get(req.params.lane),
-      });
+      // 픽률 넣기
+
+      // Match.countDocuments((err, data1) => {
+      //   if (err) return res.json({ success: false, err });
+      //   console.log(data.get(req.params.lane).play);
+      //   console.log(data1);
+      // });
+
+      // console.log(data);
+      // res.status(200).json({
+      //   success: true,
+      //   playCount: data.get(req.params.lane).play,
+      // });
     });
 });
 

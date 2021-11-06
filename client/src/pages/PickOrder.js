@@ -21,7 +21,7 @@ function PickOrder({ location, match }) {
         </button>
       </Link>
 
-      <Link to={`${match.url}/lastpick`}>
+      <Link to={{ pathname: `${match.url}/lastpick`, state: lane }}>
         <button
           style={{ marginTop: '70px', marginLeft: '100px', color: 'black' }}
         >

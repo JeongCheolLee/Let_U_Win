@@ -4,7 +4,7 @@ import SearchBar from '../components/SearchBar';
 import axios from 'axios';
 // import itemDataAll from '../data/itemDataAll';
 
-function LastPick({ history, match }) {
+function LastPick({ history, match, location }) {
   const goongseo = { fontWeight: 'bold', fontFamily: ['궁서', '궁서체'] };
 
   const [championsList, setChampionsList] = useState([]);
@@ -22,12 +22,12 @@ function LastPick({ history, match }) {
           return a.name < b.name ? -1 : a.name > b.name ? 1 : 0;
         });
         setChampionsList([...list.slice()]);
-        console.log('3');
+        //console.log('3');
       })
       .catch((err) => {
         console.log(err);
       });
-    console.log('1');
+    //console.log('1');
   }, []);
 
   useEffect(() => {
@@ -74,6 +74,7 @@ function LastPick({ history, match }) {
     history.push({
       pathname: `${match.url}/detail`,
       state: {
+        lane: location.state,
         myPick: myPick,
         enemyPick: enemyPick,
       },
