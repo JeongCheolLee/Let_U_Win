@@ -12,7 +12,7 @@ function Detail({ location }) {
   // componentDidMount
   useEffect(() => {
     getChampionsList().then((result) => {
-      setMypickEn(result.filter((s) => s.name == mypick)[0].id);
+      setMypickEn(result.filter((s) => s.name === mypick)[0].id);
     });
   }, []);
 
@@ -21,7 +21,7 @@ function Detail({ location }) {
     if (!mounted.current) {
       mounted.current = true;
     } else {
-      if (mypick != undefined) {
+      if (mypick !== undefined) {
         axios
           .get(`http://localhost:3001/statistic/winrate/${mypickEn}/${lane}`)
           .then((res) => {

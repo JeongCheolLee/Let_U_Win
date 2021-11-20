@@ -54,6 +54,7 @@ function FirstPick({ history, match, location }) {
     history.push({
       pathname: `${match.url}/detail`,
       state: {
+        lane : lane,
         myPick: myPick,
         enemyPick: enemyPick,
       },
