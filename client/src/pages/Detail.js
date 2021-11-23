@@ -1,6 +1,8 @@
 import { React, useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import getChampionsList from '../data/championList';
+import RuneAvatar from '../components/RuneAvatar';
+import RuneList from '../data/runesReforged_10_10_5.json';
 
 function Detail({ location }) {
   const mypick = location.state.myPick;
@@ -54,7 +56,7 @@ function Detail({ location }) {
   }, [mypickEn]);
 
   return (
-    <div>
+    <div align="center">
       상세페이지
       <br />
       라인:{lane}
@@ -63,6 +65,28 @@ function Detail({ location }) {
       <br />
       상대픽:{enemyPick}
       <br />
+      <div>
+        {RuneList.map((e) => (
+          <div>
+            <RuneAvatar src={`/images/${e.icon}`} name={e.name}></RuneAvatar>
+            {e.slots.map((s) =>
+              s.runes.map((r) => (
+                <RuneAvatar
+                  src={`/images/${r.icon}`}
+                  name={r.name}
+                  description={r.shortDesc}
+                ></RuneAvatar>
+              ))
+            )}
+          </div>
+        ))}
+      </div>
+      {/* <RuneAvatar
+        name="aa"
+        src={
+          'https://opgg-static.akamaized.net/images/lol/perk/8437.png?image=q_auto:best&v=1637122822'
+        }
+      /> */}
     </div>
   );
 }
