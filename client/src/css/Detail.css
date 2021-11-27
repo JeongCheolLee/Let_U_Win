@@ -1,0 +1,37 @@
+.MuiAvatar-img {
+    background-color: black;
+}
+
+.grid-container {
+    border: 10px;
+    border-color: black;
+    display: grid;
+    width: 270px;
+    height: 75%;
+    grid-template-rows: repeat(5, 1fr);
+}
+
+.grid-item {
+    width: 100%;
+    display: grid;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(20%, auto));
+    /* background-color: black; */
+    border-color: white;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    color: white;
+}
+
+.inactivated {
+    filter: gray; /* IE6-9 */
+    -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */
+    filter: grayscale(1); /* Microsoft Edge and Firefox 35+ */
+}
+
+.activated {
+    -webkit-filter: grayscale(0);
+    filter: none;
+}

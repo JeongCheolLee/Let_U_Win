@@ -1,47 +1,23 @@
-import { React, useState, useRef, useEffect } from 'react';
+import { React } from 'react';
 import { Avatar, Tooltip } from '@mui/material';
-import '../css/RuneAvatar.css';
-import RuneList from '../data/runesReforged_10_10_5.json';
+import RuneList from '../data/runesReforged_10_10_5_sorted.json';
+import { color } from '@mui/system';
 
 // import Tooltip from './Tooltip';
 
 function RuneAvatar(props) {
-    const runeID = props.id;
-    RuneList.find();
-    const imgUrl = props.src;
-    const name = props.name;
-    const description = props.description;
-    const mounted = useRef(false);
-    const hoverFlag = useRef(false);
-
-    useEffect(() => {
-        // componentDidMount
-        console.log('componentDidMount');
-    }, []);
-
-    useEffect(() => {
-        //componentDidUpdate
-        if (!mounted.current) {
-            mounted.current = true;
-            console.log('mounted flag has been true');
-        } else {
-            console.log('componentDidUpdate');
-        }
-    }, []);
-
-    const onMouseEnter = () => {
-        hoverFlag.current = true;
-    };
-
-    const onMouseLeave = () => {
-        hoverFlag.current = false;
-    };
+    const Rune = RuneList.find((e) => e.id == props.id);
+    const imgUrl = Rune.icon;
+    const name = Rune.name;
+    const description = Rune.shortDesc;
 
     return (
         <Tooltip
             title={
                 <>
-                    <div>{name}</div>
+                    <div style={{ color: 'gold', fontWeight: 'bold' }}>
+                        {name}
+                    </div>
                     {description != undefined && <br />}
                     {description != undefined && <div>{`${description}`}</div>}
                 </>
@@ -49,18 +25,14 @@ function RuneAvatar(props) {
             placement="top"
             sx={{}}
             arrow
+            disableInteractive={true}
         >
             <Avatar
                 // onMouseEnter={onMouseEnter}
                 // onMouseLeave={onMouseLeave}
                 alt={name}
-                src={imgUrl}
-                classes={{
-                    img: {
-                        width: '200px',
-                        height: '100px',
-                    },
-                }}
+                src={`/images/${imgUrl}`}
+                className={props.activate ? 'activated' : 'inactivated'}
             />
         </Tooltip>
     );
