@@ -5,8 +5,11 @@
 .grid-container {
     border: 10px;
     border-color: black;
+    background-color: white;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
     display: grid;
-    width: 270px;
+    width: 15rem;
     height: 75%;
     grid-template-rows: repeat(5, 1fr);
 }
@@ -14,7 +17,7 @@
 .grid-item {
     width: 100%;
     display: grid;
-    justify-content: center;
+    justify-content: space-evenly;
     justify-items: center;
     align-items: center;
     grid-template-columns: repeat(auto-fit, minmax(20%, auto));
