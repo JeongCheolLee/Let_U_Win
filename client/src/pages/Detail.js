@@ -2,10 +2,10 @@ import { React, useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import getChampionsList from '../data/championList';
 import RuneAvatar from '../components/RuneAvatar';
-import RuneContainerMain from '../components/RuneContainerMain';
 import RuneList from '../data/runesReforged_10_10_5.json';
+import RuneContainer from '../components/RuneContainer';
+import RuneContainerMain from '../components/RuneContainerMain';
 import RuneContainerSub from '../components/RuneContainerSub';
-import { flexbox } from '@mui/system';
 import RuneContainerStat from '../components/RuneContainerStat';
 import '../css/Detail.css';
 
@@ -77,7 +77,8 @@ function Detail({ location }) {
             <br />
             상대픽:{enemyPick}
             <br />
-            <div
+            <RuneContainer></RuneContainer>
+            {/* <div
                 style={{
                     display: 'flex',
                     alignItems: 'flex-start',
@@ -93,7 +94,7 @@ function Detail({ location }) {
                     activateList={[8234, 8237]}
                 ></RuneContainerSub>
                 <RuneContainerStat></RuneContainerStat>
-            </div>
+            </div> */}
             {/* <div>
         {RuneList.map((e) => (
           <div>

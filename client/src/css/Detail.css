@@ -10,7 +10,7 @@
     margin-right: 0.5rem;
     display: grid;
     width: 15rem;
-    height: 75%;
+    height: 25rem;
     grid-template-rows: repeat(5, 1fr);
 }
 
@@ -23,8 +23,6 @@
     grid-template-columns: repeat(auto-fit, minmax(20%, auto));
     /* background-color: black; */
     border-color: white;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
     color: white;
 }
 
