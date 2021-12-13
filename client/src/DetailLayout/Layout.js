@@ -10,6 +10,15 @@ const GridContainer = styled(Grid)({
 
 const GridItem = styled(Grid)({});
 
+const NestedGridItem = styled(Grid)({
+    // backgroundColor: 'red',
+});
+
+const NestedGridContainer = styled(Grid)({
+    backgroundColor: 'green',
+    height: '100%',
+});
+
 function Layout() {
     return (
         <GridContainer container spacing={1} alignItems="stretch">
@@ -17,7 +26,22 @@ function Layout() {
                 <BottomComponent />
             </GridItem>
             <GridItem lg item>
-                <BottomComponent />
+                <NestedGridContainer
+                    container
+                    spacing={1}
+                    direction="column"
+                    justifyContent="space-between"
+                >
+                    <NestedGridItem item lg>
+                        <TopComponent></TopComponent>
+                    </NestedGridItem>
+                    <NestedGridItem item lg>
+                        <TopComponent></TopComponent>
+                    </NestedGridItem>
+                    <NestedGridItem item lg>
+                        <TopComponent></TopComponent>
+                    </NestedGridItem>
+                </NestedGridContainer>
             </GridItem>
             <GridItem lg={2} item>
                 <BottomComponent />
