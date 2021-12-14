@@ -4,7 +4,7 @@ function BottomComponent() {
     return (
         <div
             style={{
-                background: 'black',
+                backgroundColor: 'green',
                 color: 'white',
                 width: '100%',
                 height: '100%',

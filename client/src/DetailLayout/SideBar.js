@@ -1,19 +1,19 @@
 import React from 'react';
 
-function MiddleComponent() {
+function SideBar() {
     return (
         <div
-            align="center"
             style={{
-                backgroundColor: 'purple',
+                backgroundColor: 'black',
                 color: 'white',
                 width: '100%',
                 height: '100%',
             }}
+            align="center"
         >
-            Middle
+            SideBar
         </div>
     );
 }
 
-export default MiddleComponent;
+export default SideBar;
