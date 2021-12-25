@@ -6,7 +6,6 @@ function VersusContainer() {
     const GridContainer = styled.div`
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: 1fr 8fr;
         // background-color: blue;
         // color: white;
         width: 100%;
@@ -16,27 +15,35 @@ function VersusContainer() {
     const GridItem = styled.div`
         // background-color: gray;
         border: 1px solid pink;
-        margin: 1px;
+        text-align: center;
+        // margin: 1px;
     `;
 
     const TitleBar = styled(GridItem)`
         display: flex;
-        align-items: center;
-        grid-column: span 3;
+        justify-content: center;
         font-size: 2em;
         padding-left: 0.5em;
     `;
 
     return (
         <GridContainer>
-            <TitleBar>
+            {/* <TitleBar>
                 <div>미-드</div>
-            </TitleBar>
+            </TitleBar> */}
             <GridItem>
-                <ChampionAvatar></ChampionAvatar>
+                <ChampionAvatar name="aatrox"></ChampionAvatar>
             </GridItem>
-            <GridItem>c</GridItem>
-            <GridItem>d</GridItem>
+            <GridItem>
+                <TitleBar>미-드</TitleBar>
+                <img
+                    style={{ width: '75%' }}
+                    src="/images/icons/vs_icon.png"
+                ></img>
+            </GridItem>
+            <GridItem>
+                <ChampionAvatar name="akali"></ChampionAvatar>
+            </GridItem>
         </GridContainer>
     );
 }

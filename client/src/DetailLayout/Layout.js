@@ -5,10 +5,10 @@ import { VersusContainer, MiddleComponent, BottomComponent, SideBar } from '.';
 function Layout() {
     const GridContainer = styled.div`
         display: grid;
-        grid-template-columns: 2fr 6fr 2fr;
-        grid-template-rows: 3fr 4fr 3fr;
+        grid-template-columns: 1fr 3fr 1fr;
+        grid-template-rows: 3fr 4fr 4fr;
         width: 100vw;
-        height: 100vh;
+        height: 150vh;
         // background-color: black;
         padding: 10px;
     `;
