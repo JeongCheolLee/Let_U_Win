@@ -29,6 +29,7 @@ function RuneAvatar(props) {
             <Avatar
                 // onMouseEnter={onMouseEnter}
                 // onMouseLeave={onMouseLeave}
+                sx={{ width: '3rem', height: '3rem' }}
                 alt={name}
                 src={`/images/${imgUrl}`}
                 className={props.activate ? 'activated' : 'inactivated'}

@@ -1,16 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
-import { VersusContainer, MiddleComponent, BottomComponent, SideBar } from '.';
+import RuneContainer from '../components/RuneContainer';
+import { VersusContainer, MiddleComponent } from '.';
 
 function Layout() {
     const GridContainer = styled.div`
         display: grid;
         grid-template-columns: 1fr 3fr 1fr;
         grid-template-rows: 3fr 4fr 4fr;
-        width: 100vw;
+        width: 99vw;
         height: 150vh;
         // background-color: black;
         padding: 10px;
+        row-gap: 30px;
     `;
 
     const GridItem = styled.div`
@@ -26,16 +28,17 @@ function Layout() {
 
     return (
         <GridContainer>
-            <SideBar>SideBar</SideBar>
+            <SideBar></SideBar>
             <GridItem>
                 <VersusContainer></VersusContainer>
             </GridItem>
-            <SideBar>SideBar</SideBar>
+            <SideBar></SideBar>
             <GridItem>
                 <MiddleComponent></MiddleComponent>
             </GridItem>
             <GridItem>
-                <BottomComponent></BottomComponent>
+                <h1 style={{ fontWeight: 'bold' }}>루-운</h1>
+                <RuneContainer></RuneContainer>
             </GridItem>
         </GridContainer>
     );

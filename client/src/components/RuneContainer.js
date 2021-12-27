@@ -6,7 +6,7 @@ import RuneContainerStat from './RuneContainerStat';
 
 function RuneContainer() {
     return (
-        <Grid sx={{ height: '50vh' }} container spacing={0} columns={3}>
+        <Grid sx={{ height: '100%' }} container spacing={10} columns={3}>
             <Grid item xs={1}>
                 <RuneContainerMain
                     style={8100}

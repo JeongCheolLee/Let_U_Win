@@ -14,7 +14,7 @@ function VersusContainer() {
 
     const GridItem = styled.div`
         // background-color: gray;
-        border: 1px solid pink;
+        // border: 1px solid pink;
         text-align: center;
         // margin: 1px;
     `;
@@ -22,8 +22,9 @@ function VersusContainer() {
     const TitleBar = styled(GridItem)`
         display: flex;
         justify-content: center;
-        font-size: 2em;
+        font-size: 2.5em;
         padding-left: 0.5em;
+        font-weight: bold;
     `;
 
     return (

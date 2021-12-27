@@ -40,6 +40,7 @@ function ChampionAvatar(prop) {
     const NameBar = styled('div')({
         textAlign: 'center',
         fontFamily: ['궁서', '궁서체'],
+        fontWeight: 'bold',
         fontSize: '2.5em',
         // border: '1px solid blue',
     });

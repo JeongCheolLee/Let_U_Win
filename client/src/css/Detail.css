@@ -1,16 +1,16 @@
 .MuiAvatar-img {
-    background-color: black;
+    background-color: #ededed;
+}
+
+.MuiAvatar-circular {
+    border: 0.1rem solid lightgray;
 }
 
 .grid-container {
-    border: 10px;
     border-color: black;
-    background-color: white;
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
     display: grid;
-    width: 15rem;
-    height: 25rem;
+    width: 100%;
+    height: 100%;
     grid-template-rows: repeat(5, 1fr);
 }
 
@@ -21,9 +21,6 @@
     justify-items: center;
     align-items: center;
     grid-template-columns: repeat(auto-fit, minmax(20%, auto));
-    /* background-color: black; */
-    border-color: white;
-    color: white;
 }
 
 .inactivated {
