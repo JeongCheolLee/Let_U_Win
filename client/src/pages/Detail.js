@@ -1,40 +1,32 @@
 import { React, useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import getChampionsList from '../data/championList';
-import RuneAvatar from '../components/RuneAvatar';
-import RuneList from '../data/runesReforged_10_10_5.json';
-import RuneContainer from '../components/RuneContainer';
-import RuneContainerMain from '../components/RuneContainerMain';
-import RuneContainerSub from '../components/RuneContainerSub';
-import RuneContainerStat from '../components/RuneContainerStat';
+import Layout from '../components/DetailLayout/Layout';
 import '../css/Detail.css';
 
 function Detail({ location }) {
-    const mypick = location.state.myPick;
+    const myPick = location.state.myPick;
     const enemyPick = location.state.enemyPick;
     const lane = location.state.lane;
     const mounted = useRef(false);
-    const [mypickEn, setMypickEn] = useState('aa');
+    const [myPickEn, setMyPickEn] = useState('');
 
     // componentDidMount
     useEffect(() => {
-        console.log('componentDidMount');
         getChampionsList().then((result) => {
-            setMypickEn(result.filter((s) => s.name === mypick)[0].id);
-            console.log(mypickEn);
+            setMyPickEn(result.filter((s) => s.name === myPick)[0].id);
         });
     }, []);
 
     // componentDidUpdate
     useEffect(() => {
-        console.log('update');
         if (!mounted.current) {
             mounted.current = true;
         } else {
-            if (mypick !== undefined) {
+            if (myPick !== undefined) {
                 axios
                     .get(
-                        `http://localhost:3001/statistic/winrate/${mypickEn}/${lane}`
+                        `http://localhost:3001/statistic/winrate/${myPickEn}/${lane}`
                     )
                     .then((res) => {
                         //winRate test done
@@ -44,7 +36,7 @@ function Detail({ location }) {
                         console.log(err);
                     });
                 axios
-                    .get(`http://localhost:3001/statistic/banrate/${mypickEn}`)
+                    .get(`http://localhost:3001/statistic/banrate/${myPickEn}`)
                     .then((res) => {
                         //banRate test done
                         console.log(res.data.banRate);
@@ -54,7 +46,7 @@ function Detail({ location }) {
                     });
                 axios
                     .get(
-                        `http://localhost:3001/statistic/pickrate/${mypickEn}/${lane}`
+                        `http://localhost:3001/statistic/pickrate/${myPickEn}/${lane}`
                     )
                     .then((res) => {
                         //pickRate test done
@@ -65,53 +57,20 @@ function Detail({ location }) {
                     });
             }
         }
-    }, [mypickEn]);
+    }, [myPickEn]);
 
     return (
-        <div align="center" style={{ width: '100%', height: '100vh' }}>
-            상세페이지
-            <br />
-            라인:{lane}
-            <br />
-            내픽:{mypick}
-            <br />
-            상대픽:{enemyPick}
-            <br />
-            <RuneContainer></RuneContainer>
-            {/* <div
-                style={{
-                    display: 'flex',
-                    alignItems: 'flex-start',
-                    height: '50vh',
-                }}
-            >
-                <RuneContainerMain
-                    style={8100}
-                    activateList={[8112, 8126, 8120, 8105]}
-                ></RuneContainerMain>
-                <RuneContainerSub
-                    style={8200}
-                    activateList={[8234, 8237]}
-                ></RuneContainerSub>
-                <RuneContainerStat></RuneContainerStat>
-            </div> */}
-            {/* <div>
-        {RuneList.map((e) => (
-          <div>
-            <RuneAvatar src={`/images/${e.icon}`} name={e.name}></RuneAvatar>
-            {e.slots.map((s) =>
-              s.runes.map((r) => (
-                <RuneAvatar
-                  src={`/images/${r.icon}`}
-                  name={r.name}
-                  description={r.shortDesc}
-                ></RuneAvatar>
-              ))
-            )}
-          </div>
-        ))}
-      </div> */}
-        </div>
+        <Layout
+            myPick={myPick}
+            enemyPick={enemyPick}
+            lane={lane}
+            perkStyles={[8100, 8200]}
+            perkActivation={[
+                [8112, 8126, 8120, 8105],
+                [8234, 8237],
+            ]}
+            perkStat={[5007, 5008, 5002]}
+        ></Layout>
     );
 }
 

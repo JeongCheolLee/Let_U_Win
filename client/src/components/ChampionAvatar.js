@@ -2,17 +2,24 @@ import { React, useState, useEffect } from 'react';
 import getChampionsList from '../data/championList';
 import { Avatar, styled } from '@material-ui/core';
 
-function ChampionAvatar(prop) {
-    const championNameEn =
-        prop.name.charAt(0).toUpperCase() + prop.name.slice(1);
-    const [championNameKr, setChampionNameKr] = useState('');
+function ChampionAvatar(props) {
+    let cnt = 0;
+
+    const championName = props.name;
+    const [championNameEn, setChampionNameEn] = useState('');
 
     useEffect(() => {
-        getChampionsList().then((result) => {
-            setChampionNameKr(
-                result.filter((s) => s.id === championNameEn)[0].name
-            );
-        });
+        if (championNameEn === '') {
+            console.log('versus');
+            getChampionsList().then((result) => {
+                console.log('all champions');
+                setChampionNameEn((prev) => {
+                    console.log('cnt : ' + cnt);
+                    cnt = 1;
+                    return result.filter((s) => s.name === championName)[0].id;
+                });
+            });
+        }
     }, []);
 
     const imgUrl = `http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${championNameEn}_0.jpg`;
@@ -50,7 +57,7 @@ function ChampionAvatar(prop) {
             <AvatarDiv>
                 <CustomAvatar alt={championNameEn} src={imgUrl}></CustomAvatar>
             </AvatarDiv>
-            <NameBar>{championNameKr}</NameBar>
+            <NameBar>{championName}</NameBar>
         </>
     );
 }

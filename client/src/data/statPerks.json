@@ -1,0 +1,39 @@
+[
+    {
+        "id": 5001,
+        "key": "HealthScaling",
+        "desc": "체력 +15 ~ 140 (레벨에 비례)",
+        "img": "/images/perk-images/StatMods/StatModsHealthScalingIcon.png"
+    },
+
+    {
+        "id": 5002,
+        "key": "Armor",
+        "desc": "방어력 +6",
+        "img": "/images/perk-images/StatMods/StatModsArmorIcon.png"
+    },
+    {
+        "id": 5003,
+        "key": "MagicRes",
+        "desc": "마법저향력 +8",
+        "img": "/images/perk-images/StatMods/StatModsMagicResIcon.png"
+    },
+    {
+        "id": 5005,
+        "key": "AttackSpeed",
+        "desc": "공격 속도 +10%",
+        "img": "/images/perk-images/StatMods/StatModsAttackSpeedIcon.png"
+    },
+    {
+        "id": 5007,
+        "key": "CDRScaling",
+        "desc": "스킬 가속 +8",
+        "img": "/images/perk-images/StatMods/StatModsCDRScalingIcon.png"
+    },
+    {
+        "id": 5008,
+        "key": "AdaptiveForce",
+        "desc": "적응형 능력치 +9",
+        "img": "/images/perk-images/StatMods/StatModsAdaptiveForceIcon.png"
+    }
+]

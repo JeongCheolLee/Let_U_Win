@@ -1,9 +1,19 @@
+* {
+    font-family: '궁서', '궁서체';
+}
+
 .MuiAvatar-img {
-    background-color: #ededed;
+    background-color: #3b3939;
+}
+
+.perkStyle > .MuiAvatar-img {
+    transform: scale(0.8);
+    margin-left: 2%;
 }
 
 .MuiAvatar-circular {
     border: 0.1rem solid lightgray;
+    background-color: #3b3939;
 }
 
 .grid-container {
@@ -32,4 +42,5 @@
 .activated {
     -webkit-filter: grayscale(0);
     filter: none;
+    border: 0.15rem solid rgb(209, 188, 70);
 }

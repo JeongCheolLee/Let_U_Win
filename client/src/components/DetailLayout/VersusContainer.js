@@ -1,8 +1,28 @@
 import React from 'react';
 import styled from 'styled-components';
-import ChampionAvatar from '../components/ChampionAvatar';
+import ChampionAvatar from '../ChampionAvatar';
 
-function VersusContainer() {
+function VersusContainer(props) {
+    let laneTitle;
+
+    switch (props.lane) {
+        case 'top':
+            laneTitle = '타-압';
+            break;
+        case 'jungle':
+            laneTitle = '정-글';
+            break;
+        case 'middle':
+            laneTitle = '미-드';
+            break;
+        case 'bottom':
+            laneTitle = '원-딜';
+            break;
+        case 'utility':
+            laneTitle = '서포-타';
+            break;
+    }
+
     const GridContainer = styled.div`
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
@@ -29,21 +49,18 @@ function VersusContainer() {
 
     return (
         <GridContainer>
-            {/* <TitleBar>
-                <div>미-드</div>
-            </TitleBar> */}
             <GridItem>
-                <ChampionAvatar name="aatrox"></ChampionAvatar>
+                <ChampionAvatar name={props.myPick}></ChampionAvatar>
             </GridItem>
             <GridItem>
-                <TitleBar>미-드</TitleBar>
+                <TitleBar>{laneTitle}</TitleBar>
                 <img
                     style={{ width: '75%' }}
                     src="/images/icons/vs_icon.png"
                 ></img>
             </GridItem>
             <GridItem>
-                <ChampionAvatar name="akali"></ChampionAvatar>
+                <ChampionAvatar name={props.enemyPick}></ChampionAvatar>
             </GridItem>
         </GridContainer>
     );

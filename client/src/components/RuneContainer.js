@@ -4,20 +4,23 @@ import RuneContainerMain from './RuneContainerMain';
 import RuneContainerSub from './RuneContainerSub';
 import RuneContainerStat from './RuneContainerStat';
 
-function RuneContainer() {
+function RuneContainer(props) {
     return (
         <Grid sx={{ height: '100%' }} container spacing={10} columns={3}>
             <Grid item xs={1}>
                 <RuneContainerMain
-                    style={8100}
-                    activateList={[8112, 8126, 8120, 8105]}
+                    style={props.style[0]}
+                    activateList={props.activation[0]}
                 />
             </Grid>
             <Grid item xs={1}>
-                <RuneContainerSub style={8200} activateList={[8234, 8237]} />
+                <RuneContainerSub
+                    style={props.style[1]}
+                    activateList={props.activation[1]}
+                />
             </Grid>
             <Grid item xs={1}>
-                <RuneContainerStat />
+                <RuneContainerStat activateList={props.stat} />
             </Grid>
         </Grid>
     );

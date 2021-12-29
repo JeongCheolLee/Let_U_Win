@@ -32,7 +32,10 @@ function RuneAvatar(props) {
                 sx={{ width: '3rem', height: '3rem' }}
                 alt={name}
                 src={`/images/${imgUrl}`}
-                className={props.activate ? 'activated' : 'inactivated'}
+                className={`
+                    ${props.activate ? 'activated' : 'inactivated'} ${
+                    description === undefined ? 'perkStyle' : ''
+                }`}
             />
         </Tooltip>
     );

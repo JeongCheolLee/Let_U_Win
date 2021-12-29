@@ -1,9 +1,9 @@
-import React from 'react';
+import { React, memo } from 'react';
 import styled from 'styled-components';
-import RuneContainer from '../components/RuneContainer';
+import RuneContainer from '../RuneContainer';
 import { VersusContainer, MiddleComponent } from '.';
 
-function Layout() {
+function Layout(props) {
     const GridContainer = styled.div`
         display: grid;
         grid-template-columns: 1fr 3fr 1fr;
@@ -30,7 +30,11 @@ function Layout() {
         <GridContainer>
             <SideBar></SideBar>
             <GridItem>
-                <VersusContainer></VersusContainer>
+                <VersusContainer
+                    myPick={props.myPick}
+                    enemyPick={props.enemyPick}
+                    lane={props.lane}
+                ></VersusContainer>
             </GridItem>
             <SideBar></SideBar>
             <GridItem>
@@ -38,7 +42,11 @@ function Layout() {
             </GridItem>
             <GridItem>
                 <h1 style={{ fontWeight: 'bold' }}>루-운</h1>
-                <RuneContainer></RuneContainer>
+                <RuneContainer
+                    style={props.perkStyles}
+                    activation={props.perkActivation}
+                    stat={props.perkStat}
+                ></RuneContainer>
             </GridItem>
         </GridContainer>
     );
