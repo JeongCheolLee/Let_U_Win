@@ -1,4 +1,4 @@
-import { React, useState, useRef, useCallback, useEffect } from 'react';
+import { React, useState, useCallback, useEffect } from 'react';
 import ImageListHjlee from '../components/ImageListHjlee';
 import SearchBar from '../components/SearchBar';
 import axios from 'axios';
