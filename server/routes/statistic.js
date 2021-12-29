@@ -13,12 +13,40 @@ router.get('/winrate/:id/:lane', (req, res) => {
     .select(req.params.lane)
     .exec((err, data) => {
       if (err) return res.json({ success: false, err });
+
+      const playCount = data.get(req.params.lane).play;
+      const winCount = data.get(req.params.lane).win;
+      const winRate = (winCount / playCount).toFixed(4) ;
+
+      res.status(200).json({
+        success: true,
+        championName: req.params.id,
+        lane: req.params.lane,
+        winRate : winRate
+      });
+    });
+});
+
+router.get('/winrate/:id/:lane/:enemy', (req, res) => {
+
+  // findOne이 좀 찝찝하긴 한데, 절대 하나밖에 없다는 가정 on
+  WinRate.findOne({ id: req.params.id })
+    .select(req.params.lane)
+    .exec((err, data) => {
+      if (err) return res.json({ success: false, err });
+
+      const winCounts = data.get(req.params.lane).enemyWin[req.params.enemy]
+      const loseCounts = data.get(req.params.lane).enemyLose[req.params.enemy]
+
       // console.log(data);
       res.status(200).json({
         success: true,
         championName: req.params.id,
         lane: req.params.lane,
-        winRate: data.get(req.params.lane).winRate,
+        enemy : req.params.enemy,
+        enemyWinCounts: winCounts,
+        enemyLoseCounts: loseCounts,
+        relativeWinRate : (winCounts/(winCounts + loseCounts) *100).toFixed(2)
       });
     });
 });
@@ -53,5 +81,7 @@ router.get('/banrate/:id', (req, res) => {
       });
     });
 });
+
+
 
 module.exports = router;
