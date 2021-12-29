@@ -1,1 +1,1 @@
-GET http://localhost:3001/statistic/pickrate/Leblanc/middle
+GET http://localhost:3001/statistic/banrate/Leblanc
