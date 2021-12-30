@@ -38,10 +38,10 @@ function ChampionAvatar(props) {
     const CustomAvatar = styled(Avatar)({
         width: `${length}%`,
         height: `${length}%`,
-        border: '5px solid gray',
         position: 'absolute',
         top: `${beginCoord}%`,
         left: `${beginCoord}%`,
+        border: `5px solid ${props.myPick === true ? '#a145dc' : '#20b581'}`,
     });
 
     const NameBar = styled('div')({

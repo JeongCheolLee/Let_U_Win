@@ -50,7 +50,10 @@ function VersusContainer(props) {
     return (
         <GridContainer>
             <GridItem>
-                <ChampionAvatar name={props.myPick}></ChampionAvatar>
+                <ChampionAvatar
+                    name={props.myPick}
+                    myPick>
+                </ChampionAvatar>
             </GridItem>
             <GridItem>
                 <TitleBar>{laneTitle}</TitleBar>
@@ -60,7 +63,10 @@ function VersusContainer(props) {
                 ></img>
             </GridItem>
             <GridItem>
-                <ChampionAvatar name={props.enemyPick}></ChampionAvatar>
+                <ChampionAvatar
+                    name={props.enemyPick}
+                    enemyPick>
+                </ChampionAvatar>
             </GridItem>
         </GridContainer>
     );
