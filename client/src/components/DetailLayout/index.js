@@ -1,2 +1,2 @@
 export { default as VersusContainer } from './VersusContainer';
-export { default as MiddleComponent } from './MiddleComponent';
+export { default as DetailTable } from './DetailTable';

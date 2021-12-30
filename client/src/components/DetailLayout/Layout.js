@@ -1,7 +1,7 @@
 import { React, memo } from 'react';
 import styled from 'styled-components';
 import RuneContainer from '../RuneContainer';
-import { VersusContainer, MiddleComponent } from '.';
+import { VersusContainer, DetailTable } from '.';
 
 function Layout(props) {
     const GridContainer = styled.div`
@@ -38,7 +38,11 @@ function Layout(props) {
             </GridItem>
             <SideBar></SideBar>
             <GridItem>
-                <MiddleComponent></MiddleComponent>
+                <DetailTable
+                    myPick={props.myPick}
+                    enemyPick={props.enemyPick}
+                    lane={props.lane}>    
+                </DetailTable>
             </GridItem>
             <GridItem>
                 <h1 style={{ fontWeight: 'bold' }}>루-운</h1>
