@@ -1,7 +1,6 @@
 import { React, useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import getChampionsList from '../../data/championList';
-import { borderTop } from '@mui/system';
 
 export default function DetailTable(props) {
     const laneTranslate = {
