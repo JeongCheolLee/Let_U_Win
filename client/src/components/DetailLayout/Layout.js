@@ -1,7 +1,7 @@
-import { React, memo } from 'react';
+import { React } from 'react';
 import styled from 'styled-components';
 import RuneContainer from '../RuneContainer';
-import { VersusContainer, DetailTable, CommentInputBox } from '.';
+import { VersusContainer, DetailTable, CommentInputBox, CommentTable } from '.';
 
 function Layout(props) {
     const GridContainer = styled.div`
@@ -37,6 +37,10 @@ function Layout(props) {
                 ></VersusContainer>
             </GridItem>
             <SideBar>
+                <CommentTable
+                    myPick={props.myPick}
+                    enemyPick={props.enemyPick}
+                ></CommentTable>
                 <CommentInputBox
                     myPick={props.myPick}
                     enemyPick={props.enemyPick}

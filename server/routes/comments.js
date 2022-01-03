@@ -3,13 +3,12 @@ const express = require('express');
 const router = express.Router();
 
 //매치 구도에 따른 comments 출력
-router.get('/all/:myChamp/:enemyChamp', (req, res) => {
+router.get('/all/:myPick/:enemyPick', (req, res) => {
     Comment.find({
         myPick: req.params.myPick,
         enemyPick: req.params.enemyPick,
     }).exec((err, result) => {
         if (err) return res.json({ success: false, err });
-        console.log('comments router test');
         res.status(200).json({
             success: true,
             list: result,

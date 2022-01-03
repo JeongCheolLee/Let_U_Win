@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { React, useState } from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import axios from 'axios';
@@ -8,7 +8,7 @@ export default function MultilineTextFields(props) {
     const enemyPick = props.enemyPick;
     const defaultValue = `${myPick}로 ${enemyPick}을 상대할 때 꿀팁을 알려주게나!`;
 
-    const [value, setValue] = React.useState('');
+    const [value, setValue] = useState('');
 
     const handleChange = (event) => {
         setValue(event.target.value);
@@ -42,8 +42,8 @@ export default function MultilineTextFields(props) {
     };
 
     return (
-        <div id="rappeer">
-            <div style={{ display: 'flex' }}>
+        <div id="wrappeer">
+            <div style={{ display: 'flex', paddingTop: '10px' }}>
                 <TextField
                     style={{
                         backgroundColor: 'white',
@@ -54,7 +54,7 @@ export default function MultilineTextFields(props) {
                     placeholder={defaultValue}
                     label="챔피언 팁 전수"
                     multiline
-                    rows={4}
+                    rows={3}
                     value={value}
                     onChange={handleChange}
                 />
