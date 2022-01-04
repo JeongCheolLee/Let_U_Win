@@ -3,19 +3,14 @@ import getChampionsList from '../data/championList';
 import { Avatar, styled } from '@material-ui/core';
 
 function ChampionAvatar(props) {
-    let cnt = 0;
 
     const championName = props.name;
     const [championNameEn, setChampionNameEn] = useState('');
 
     useEffect(() => {
         if (championNameEn === '') {
-            console.log('versus');
             getChampionsList().then((result) => {
-                console.log('all champions');
                 setChampionNameEn((prev) => {
-                    console.log('cnt : ' + cnt);
-                    cnt = 1;
                     return result.filter((s) => s.name === championName)[0].id;
                 });
             });
