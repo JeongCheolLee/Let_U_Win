@@ -1,9 +1,11 @@
-import { React, memo } from 'react';
+import { React, useState } from 'react';
 import styled from 'styled-components';
 import RuneContainer from '../RuneContainer';
-import { VersusContainer, DetailTable } from '.';
+import { VersusContainer, DetailTable, CommentInputBox, CommentTable } from '.';
 
 function Layout(props) {
+    const [comment, setComment] = useState('');
+
     const GridContainer = styled.div`
         display: grid;
         grid-template-columns: 1fr 3fr 1fr;
@@ -36,13 +38,24 @@ function Layout(props) {
                     lane={props.lane}
                 ></VersusContainer>
             </GridItem>
-            <SideBar></SideBar>
+            <SideBar>
+                <CommentTable
+                    myPick={props.myPick}
+                    enemyPick={props.enemyPick}
+                ></CommentTable>
+                <CommentInputBox
+                    myPick={props.myPick}
+                    enemyPick={props.enemyPick}
+                    setComment={setComment}
+                    comment={comment}
+                ></CommentInputBox>
+            </SideBar>
             <GridItem>
                 <DetailTable
                     myPick={props.myPick}
                     enemyPick={props.enemyPick}
-                    lane={props.lane}>    
-                </DetailTable>
+                    lane={props.lane}
+                ></DetailTable>
             </GridItem>
             <GridItem>
                 <h1 style={{ fontWeight: 'bold' }}>루-운</h1>

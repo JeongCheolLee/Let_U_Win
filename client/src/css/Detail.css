@@ -44,3 +44,23 @@
     filter: none;
     border: 0.15rem solid rgb(209, 188, 70);
 }
+
+#detailTable td {
+    border-bottom: 1px solid grey;
+}
+
+.purpleWin {
+    color: #a145dc;
+    background-color: #ece4ef;
+}
+
+.purpleLose {
+}
+
+.greenWin {
+    color: #20b581;
+    background-color: #e4ebe4;
+}
+
+.greenLose {
+}
