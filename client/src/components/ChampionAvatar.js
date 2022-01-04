@@ -28,7 +28,6 @@ function ChampionAvatar(props) {
         height: 0,
         paddingTop: '80%',
         position: 'relative',
-        // backgroundColor: 'black',
         margin: '8% auto auto',
     });
 
@@ -38,10 +37,10 @@ function ChampionAvatar(props) {
     const CustomAvatar = styled(Avatar)({
         width: `${length}%`,
         height: `${length}%`,
-        border: '5px solid gray',
         position: 'absolute',
         top: `${beginCoord}%`,
         left: `${beginCoord}%`,
+        border: `5px solid ${props.myPick === true ? '#a145dc' : '#20b581'}`,
     });
 
     const NameBar = styled('div')({
@@ -55,7 +54,11 @@ function ChampionAvatar(props) {
     return (
         <>
             <AvatarDiv>
-                <CustomAvatar alt={championNameEn} src={imgUrl}></CustomAvatar>
+                <CustomAvatar
+                    className="myPick"
+                    alt={championNameEn}
+                    src={imgUrl}
+                ></CustomAvatar>
             </AvatarDiv>
             <NameBar>{championName}</NameBar>
         </>

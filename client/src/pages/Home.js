@@ -1,53 +1,42 @@
-import { React, useState } from 'react';
+import { React } from 'react';
 import ButtonClickable from '../components/ButtonClickable.js';
-import axios from 'axios';
+import '../css/Home.css';
 
 function Home({ history }) {
-    const [test, setTest] = useState('보내기');
     const lanes = [
         {
-            ko: '탑',
+            ko: '타-압',
             en: 'top',
         },
         {
-            ko: '정글',
+            ko: '정-글',
             en: 'jungle',
         },
         {
-            ko: '미드',
+            ko: '미-드',
             en: 'middle',
         },
         {
-            ko: '원딜',
+            ko: '원-딜',
             en: 'bottom',
         },
         {
-            ko: '서폿',
+            ko: '서포-타',
             en: 'utility',
         },
     ];
 
-    const onClickDBtest = () => {
-        axios
-            .get('http://localhost:3001/')
-            .then((res) => {
-                console.log(res.data);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    };
-
     return (
-        <div align="center">
+        <div style={{ textAlign: 'center' }}>
             <div
                 style={{
                     fontSize: '35px',
                     fontWeight: 'bold',
                     fontFamily: ['궁서', '궁서체'],
+                    marginBottom: '15%',
                 }}
             >
-                ㅇㄷ?
+                어디로 가야 하오?
             </div>
             {lanes.map((item) => {
                 return (
@@ -58,8 +47,6 @@ function Home({ history }) {
                     />
                 );
             })}
-            <br />
-            <button onClick={onClickDBtest}>{test}</button>
         </div>
     );
 }
