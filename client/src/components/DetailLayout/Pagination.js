@@ -12,7 +12,7 @@ export default function PaginationIcon(props) {
     }
 
     function RightButtonClickHandler(commentCnt) {
-        if (commentCnt > props.commentListLength) {
+        if (commentCnt >= props.commentListLength) {
             return 0;
         }
         props.setCommentCnt(commentCnt + 3);
