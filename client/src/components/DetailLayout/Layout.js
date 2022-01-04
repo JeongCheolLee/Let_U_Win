@@ -1,9 +1,11 @@
-import { React } from 'react';
+import { React, useState } from 'react';
 import styled from 'styled-components';
 import RuneContainer from '../RuneContainer';
 import { VersusContainer, DetailTable, CommentInputBox, CommentTable } from '.';
 
 function Layout(props) {
+    const [comment, setComment] = useState('');
+
     const GridContainer = styled.div`
         display: grid;
         grid-template-columns: 1fr 3fr 1fr;
@@ -44,6 +46,8 @@ function Layout(props) {
                 <CommentInputBox
                     myPick={props.myPick}
                     enemyPick={props.enemyPick}
+                    setComment={setComment}
+                    comment={comment}
                 ></CommentInputBox>
             </SideBar>
             <GridItem>

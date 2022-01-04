@@ -15,7 +15,11 @@ export default function MultilineTextFields(props) {
     };
 
     const clickHandler = () => {
+        console.log(props.comment);
         console.log('clickHandler clicked');
+        props.setComment(value);
+        console.log(props.comment);
+
         let commentData = {
             myPick: myPick,
             enemyPick: enemyPick,
