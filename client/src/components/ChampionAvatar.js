@@ -10,11 +10,8 @@ function ChampionAvatar(props) {
 
     useEffect(() => {
         if (championNameEn === '') {
-            console.log('versus');
             getChampionsList().then((result) => {
-                console.log('all champions');
                 setChampionNameEn((prev) => {
-                    console.log('cnt : ' + cnt);
                     cnt = 1;
                     return result.filter((s) => s.name === championName)[0].id;
                 });

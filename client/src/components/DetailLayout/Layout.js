@@ -54,12 +54,19 @@ function Layout(props) {
                 <DetailTable
                     myPick={props.myPick}
                     enemyPick={props.enemyPick}
+                    myPickEn={props.myPickEn}
+                    enemyPickEn={props.enemyPickEn}
                     lane={props.lane}
                 ></DetailTable>
             </GridItem>
             <GridItem>
                 <h1 style={{ fontWeight: 'bold' }}>루-운</h1>
                 <RuneContainer
+                    lane={props.lane}
+                    myPick={props.myPick}
+                    enemyPick={props.enemyPick}
+                    myPickEn={props.myPickEn}
+                    enemyPickEn={props.enemyPickEn}
                     style={props.perkStyles}
                     activation={props.perkActivation}
                     stat={props.perkStat}
