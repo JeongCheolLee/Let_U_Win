@@ -14,6 +14,7 @@ export default function DetailTable(props) {
     const [myLanePickRate, setMyLanePickRate] = useState('');
     const [enemyPickRate, setEnemyPickRate] = useState('');
     const [enemyLanePickRate, setEnemyLanePickRate] = useState('');
+    const [kda, setKda] = useState('');
 
     useEffect(() => {
         axios
@@ -24,6 +25,16 @@ export default function DetailTable(props) {
             .catch((err) => {
                 console.log(err);
             });
+        // axios
+        //     .get(
+        //         `http://localhost:3001/statistic/winrate/${myPickEn}/${lane}/${enemyPickEn}`
+        //     )
+        //     .then((res) => {
+        //         setRelativeWinRate(res.data.relativeWinRate);
+        //     })
+        //     .catch((err) => {
+        //         console.log(err);
+        //     });
         axios
             .get(
                 `http://localhost:3001/statistic/winrate/${myPickEn}/${lane}/${enemyPickEn}`
@@ -136,6 +147,23 @@ export default function DetailTable(props) {
                         }
                     >
                         {(100 - relativeWinRate).toFixed(2)}%
+                    </td>
+                </tr>
+                <tr>
+                    <td
+                        className={
+                            findWinner(totalWinRate, 1 - totalWinRate)[0]
+                        }
+                    >
+                        {(totalWinRate * 100).toFixed(2)}%
+                    </td>
+                    <td> KDA </td>
+                    <td
+                        className={
+                            findWinner(totalWinRate, 1 - totalWinRate)[1]
+                        }
+                    >
+                        {100 - (totalWinRate * 100).toFixed(2)}%
                     </td>
                 </tr>
                 <tr>
