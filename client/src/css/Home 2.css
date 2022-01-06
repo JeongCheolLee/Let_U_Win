@@ -1,0 +1,11 @@
+.MuiButton-root {
+    width: 10rem;
+    height: 10rem;
+    margin: 2rem;
+}
+
+.MuiButton-label {
+    font-size: 35px;
+    font-weight: bold;
+    font-family: '궁서', '궁서체';
+}

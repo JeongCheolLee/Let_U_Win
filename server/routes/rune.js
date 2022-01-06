@@ -28,10 +28,6 @@ const FirstCharUpperCase = (str) => {
     return str[0].toUpperCase() + str.slice(1);
 };
 
-function FirstCharUpper(str) {
-    return str.charAt(0).toUpperCase() + str.slice(1);
-}
-
 // rune/~
 router.get('/:lane/:mypick/:enemypick', (req, res) => {
     const PerksModel = laneClassify(req.params.lane);
@@ -42,7 +38,15 @@ router.get('/:lane/:mypick/:enemypick', (req, res) => {
         if (err) return res.json({ success: false, err });
 
         if (docs.length === 1) {
-            console.log(docs);
+            const data = docs[0][myPick];
+            console.log(data.filter((e) => Object.keys(e).includes(enemyPick)));
+            // for (champion in data) {
+            //     console.log(`${champion}`);
+            // }
+
+            // for (const [key, value] of Object.entries(data)) {
+            //     console.log(`${key} - ${value}`);
+            // }
         } else {
             console.log(docs.length);
             // console.log(docs);
