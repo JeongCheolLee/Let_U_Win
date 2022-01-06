@@ -11,6 +11,10 @@ function ChampionAvatar(props) {
         if (championNameEn === '') {
             getChampionsList().then((result) => {
                 setChampionNameEn((prev) => {
+<<<<<<< HEAD
+=======
+                    cnt = 1;
+>>>>>>> 81fce32922912103258db70adccc403f8d74d60f
                     return result.filter((s) => s.name === championName)[0].id;
                 });
             });
