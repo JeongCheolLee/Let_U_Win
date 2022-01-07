@@ -1,4 +1,4 @@
-import { React, useEffect, useState, useRef } from 'react';
+import { React, useEffect, useState } from 'react';
 // import axios from 'axios';
 import getChampionsList from '../data/championList';
 import Layout from '../components/DetailLayout/Layout';
@@ -8,7 +8,6 @@ function Detail({ location }) {
     const myPick = location.state.myPick;
     const enemyPick = location.state.enemyPick;
     const lane = location.state.lane;
-    const mounted = useRef(false);
     const [myPickEn, setMyPickEn] = useState('');
     const [enemyPickEn, setEnemyPickEn] = useState('');
 
@@ -19,45 +18,6 @@ function Detail({ location }) {
             setEnemyPickEn(result.filter((s) => s.name === enemyPick)[0].id);
         });
     }, []);
-
-    // // componentDidUpdate
-    // useEffect(() => {
-    //     if (!mounted.current) {
-    //         mounted.current = true;
-    //     } else {
-    //         if (myPick !== undefined) {
-    //             axios
-    //                 .get(
-    //                     `http://localhost:3001/statistic/winrate/${myPickEn}/${lane}`
-    //                 )
-    //                 .then((res) => {
-    //                 })
-    //                 .catch((err) => {
-    //                     console.log(err);
-    //                 });
-    //             axios
-    //                 .get(`http://localhost:3001/statistic/banrate/${myPickEn}`)
-    //                 .then((res) => {
-    //                     //banRate test done
-
-    //                 })
-    //                 .catch((err) => {
-    //                     console.log(err);
-    //                 });
-    //             axios
-    //                 .get(
-    //                     `http://localhost:3001/statistic/pickrate/${myPickEn}/${lane}`
-    //                 )
-    //                 .then((res) => {
-    //                     //pickRate test done
-    //                     console.log(res.data);
-    //                 })
-    //                 .catch((err) => {
-    //                     console.log(err);
-    //                 });
-    //         }
-    //     }
-    // }, [myPickEn]);
 
     return (
         <Layout

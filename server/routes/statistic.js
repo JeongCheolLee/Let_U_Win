@@ -121,20 +121,27 @@ router.get('/kda/:lane/:mypick/:enemypick', (req, res) => {
         })
         .exec((err, data) => {
             if (err) return res.json({ success: false, err });
-            const resolution = data[0].get(myPick)[0][enemyPick];
-            res.status(200).json({
-                success: true,
-                myPick: myPick,
-                enemyPick: enemyPick,
-                kills: resolution.kills,
-                deaths: resolution.deaths,
-                assists: resolution.assists,
-                cnt: resolution.cnt,
-                win: resolution.win,
-                champLevel: resolution.champLevel,
-                totalDamageDealtToChampions:
-                    resolution.totalDamageDealtToChampions,
-            });
+            try {
+                const resolution = data[0].get(myPick)[0][enemyPick];
+                res.status(200).json({
+                    success: true,
+                    myPick: myPick,
+                    enemyPick: enemyPick,
+                    kills: resolution.kills,
+                    deaths: resolution.deaths,
+                    assists: resolution.assists,
+                    cnt: resolution.cnt,
+                    win: resolution.win,
+                    champLevel: resolution.champLevel,
+                    totalDamageDealtToChampions:
+                        resolution.totalDamageDealtToChampions,
+                });
+            } catch (e) {
+                res.status(204).json({
+                    success: true,
+                    msg: 'not enough data',
+                });
+            }
         });
 });
 

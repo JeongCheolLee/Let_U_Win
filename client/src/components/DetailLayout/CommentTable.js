@@ -102,7 +102,7 @@ function CommentTable(props) {
                 padding: '20px',
                 border: '1px solid grey',
                 backgroundColor: 'white',
-                width: '16rem',
+                width: '100%',
                 height: '33rem',
             }}
         >

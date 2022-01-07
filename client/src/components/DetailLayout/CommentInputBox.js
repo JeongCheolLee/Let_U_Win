@@ -47,7 +47,7 @@ export default function MultilineTextFields(props) {
 
     return (
         <div id="wrappeer">
-            <div style={{ display: 'flex', paddingTop: '10px' }}>
+            <div style={{ display: 'flex', paddingTop: '10px', width: '100%' }}>
                 <TextField
                     style={{
                         backgroundColor: 'white',
@@ -62,7 +62,7 @@ export default function MultilineTextFields(props) {
                     value={value}
                     onChange={handleChange}
                 />
-                <Button style={{}} variant="contained" onClick={clickHandler}>
+                <Button variant="contained" onClick={clickHandler}>
                     제출
                 </Button>
             </div>
