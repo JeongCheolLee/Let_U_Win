@@ -1,5 +1,12 @@
 const { WinRate } = require('../models/WinRate');
 const { BanRate } = require('../models/BanRate');
+const {
+    kdaBottom,
+    kdaJungle,
+    kdaMiddle,
+    kdaUtility,
+    kdaTop,
+} = require('../models/KDA');
 const express = require('express');
 const router = express.Router();
 
@@ -87,22 +94,46 @@ router.get('/banrate/:id', (req, res) => {
         });
 });
 
-router.get('/kda/:mypick/:enemypick', (req, res) => {
-    // findOne이 좀 찝찝하긴 한데, 절대 하나밖에 없다는 가정 on
-    WinRate.findOne({ id: req.params.id })
-        .select(req.params.lane)
+function matchDbSelector(lane) {
+    if (lane === 'top') {
+        return kdaTop;
+    } else if (lane === 'jungle') {
+        return kdaJungle;
+    } else if (lane === 'middle') {
+        return kdaMiddle;
+    } else if (lane === 'bottom') {
+        return kdaBottom;
+    } else {
+        return kdaUtility;
+    }
+}
+
+router.get('/kda/:lane/:mypick/:enemypick', (req, res) => {
+    const lane = req.params.lane;
+    const myPick = req.params.mypick;
+    const enemyPick = req.params.enemypick;
+
+    matchDbSelector(lane)
+        .find({ [myPick]: { $exists: true } })
+        .select({
+            [myPick]: { $elemMatch: { [enemyPick]: { $exists: true } } },
+            _id: false,
+        })
         .exec((err, data) => {
             if (err) return res.json({ success: false, err });
-
-            const playCount = data.get(req.params.lane).play;
-            const winCount = data.get(req.params.lane).win;
-            const winRate = (winCount / playCount).toFixed(4);
-
+            const resolution = data[0].get(myPick)[0][enemyPick];
             res.status(200).json({
                 success: true,
-                championName: req.params.id,
-                lane: req.params.lane,
-                winRate: winRate,
+                myPick: myPick,
+                enemyPick: enemyPick,
+                kills: resolution.kills,
+                deaths: resolution.deaths,
+                assists: resolution.assists,
+                cnt: resolution.cnt,
+                win: resolution.win,
+                champLevel: resolution.champLevel,
+                totalDamageDealtToChampions:
+                    resolution.totalDamageDealtToChampions,
             });
         });
 });

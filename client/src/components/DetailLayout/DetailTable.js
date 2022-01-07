@@ -15,6 +15,11 @@ export default function DetailTable(props) {
     const [enemyPickRate, setEnemyPickRate] = useState('');
     const [enemyLanePickRate, setEnemyLanePickRate] = useState('');
     const [kda, setKda] = useState('');
+    const [totalDamage, setTotalDamage] = useState('');
+    const [champLevel, setChampLevel] = useState('');
+    const [enemyKda, setEnemyKda] = useState('');
+    const [enemyTotalDamage, setEnemyTotalDamage] = useState('');
+    const [enemyChampLevel, setEnemyChampLevel] = useState('');
 
     useEffect(() => {
         axios
@@ -25,22 +30,42 @@ export default function DetailTable(props) {
             .catch((err) => {
                 console.log(err);
             });
-        // axios
-        //     .get(
-        //         `http://localhost:3001/statistic/winrate/${myPickEn}/${lane}/${enemyPickEn}`
-        //     )
-        //     .then((res) => {
-        //         setRelativeWinRate(res.data.relativeWinRate);
-        //     })
-        //     .catch((err) => {
-        //         console.log(err);
-        //     });
         axios
             .get(
-                `http://localhost:3001/statistic/winrate/${myPickEn}/${lane}/${enemyPickEn}`
+                `http://localhost:3001/statistic/kda/${lane}/${myPickEn}/${enemyPickEn}`
             )
             .then((res) => {
-                setRelativeWinRate(res.data.relativeWinRate);
+                const count = res.data.cnt;
+                const win = res.data.win;
+                const kills = res.data.kills;
+                const deaths = res.data.deaths;
+                const assists = res.data.assists;
+                const champLevel = res.data.champLevel;
+                const totalDamage = res.data.totalDamageDealtToChampions;
+
+                setKda(((kills + assists) / deaths).toFixed(2));
+                setRelativeWinRate(((win / count) * 100).toFixed(2));
+                setTotalDamage((totalDamage / count).toFixed(2));
+                setChampLevel((champLevel / count).toFixed(2));
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+        axios
+            .get(
+                `http://localhost:3001/statistic/kda/${lane}/${enemyPickEn}/${myPickEn}`
+            )
+            .then((res) => {
+                const count = res.data.cnt;
+                const kills = res.data.kills;
+                const deaths = res.data.deaths;
+                const assists = res.data.assists;
+                const champLevel = res.data.champLevel;
+                const totalDamage = res.data.totalDamageDealtToChampions;
+
+                setEnemyKda(((kills + assists) / deaths).toFixed(2));
+                setEnemyTotalDamage((totalDamage / count).toFixed(2));
+                setEnemyChampLevel((champLevel / count).toFixed(2));
             })
             .catch((err) => {
                 console.log(err);
@@ -146,24 +171,34 @@ export default function DetailTable(props) {
                             )[1]
                         }
                     >
-                        {(100 - relativeWinRate).toFixed(2)}%
+                        {100 - relativeWinRate}%
                     </td>
                 </tr>
                 <tr>
-                    <td
-                        className={
-                            findWinner(totalWinRate, 1 - totalWinRate)[0]
-                        }
-                    >
-                        {(totalWinRate * 100).toFixed(2)}%
-                    </td>
+                    <td className={findWinner(kda, enemyKda)[0]}>{kda}</td>
                     <td> KDA </td>
+                    <td className={findWinner(kda, enemyKda)[1]}>{enemyKda}</td>
+                </tr>
+                <tr>
                     <td
-                        className={
-                            findWinner(totalWinRate, 1 - totalWinRate)[1]
-                        }
+                        className={findWinner(totalDamage, enemyTotalDamage)[0]}
                     >
-                        {100 - (totalWinRate * 100).toFixed(2)}%
+                        {totalDamage}
+                    </td>
+                    <td> 챔피언에게 가한 피해 </td>
+                    <td
+                        className={findWinner(totalDamage, enemyTotalDamage)[1]}
+                    >
+                        {enemyTotalDamage}
+                    </td>
+                </tr>
+                <tr>
+                    <td className={findWinner(champLevel, enemyChampLevel)[0]}>
+                        {champLevel}
+                    </td>
+                    <td> 레벨 </td>
+                    <td className={findWinner(champLevel, enemyChampLevel)[1]}>
+                        {enemyChampLevel}
                     </td>
                 </tr>
                 <tr>
