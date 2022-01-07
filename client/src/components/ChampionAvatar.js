@@ -3,8 +3,6 @@ import getChampionsList from '../data/championList';
 import { Avatar, styled } from '@material-ui/core';
 
 function ChampionAvatar(props) {
-    let cnt = 0;
-
     const championName = props.name;
     const [championNameEn, setChampionNameEn] = useState('');
 
@@ -12,7 +10,6 @@ function ChampionAvatar(props) {
         if (championNameEn === '') {
             getChampionsList().then((result) => {
                 setChampionNameEn((prev) => {
-                    cnt = 1;
                     return result.filter((s) => s.name === championName)[0].id;
                 });
             });

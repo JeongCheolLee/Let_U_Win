@@ -1,9 +1,7 @@
-import { React, useState } from 'react';
+import { React } from 'react';
 import ButtonClickable from '../components/ButtonClickable.js';
-import axios from 'axios';
 
 function Home({ history }) {
-    const [test, setTest] = useState('보내기');
     const lanes = [
         {
             ko: '탑',
@@ -27,17 +25,6 @@ function Home({ history }) {
         },
     ];
 
-    const onClickDBtest = () => {
-        axios
-            .get('http://localhost:3001/')
-            .then((res) => {
-                console.log(res.data);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    };
-
     return (
         <div align="center">
             <div
@@ -59,7 +46,6 @@ function Home({ history }) {
                 );
             })}
             <br />
-            <button onClick={onClickDBtest}>{test}</button>
         </div>
     );
 }
