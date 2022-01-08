@@ -4,12 +4,16 @@ import getChampionsList from '../data/championList';
 import Layout from '../components/DetailLayout/Layout';
 import '../css/Detail.css';
 
-function Detail({ location }) {
+function Detail({ location, history }) {
     const myPick = location.state.myPick;
     const enemyPick = location.state.enemyPick;
     const lane = location.state.lane;
     const [myPickEn, setMyPickEn] = useState('');
     const [enemyPickEn, setEnemyPickEn] = useState('');
+
+    function pageGoBack() {
+        history.goBack();
+    }
 
     // componentDidMount
     useEffect(() => {
@@ -32,6 +36,7 @@ function Detail({ location }) {
                 [8234, 8237],
             ]}
             perkStat={[5007, 5008, 5002]}
+            pageGoBack={pageGoBack}
         ></Layout>
     );
 }

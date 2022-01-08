@@ -1,9 +1,8 @@
 import { React, useEffect, useState } from 'react';
 import axios from 'axios';
 import Tooltip from '@mui/material/Tooltip';
-import { set } from 'mongoose';
 
-export default function DetailTable(props, history) {
+export default function DetailTable(props) {
     const lane = props.lane;
     const myPickEn = props.myPickEn;
     const enemyPickEn = props.enemyPickEn;
@@ -48,6 +47,7 @@ export default function DetailTable(props, history) {
                     alert(
                         `죄송합니다. ${lane} 포지션에서 ${props.myPick}, ${props.enemyPick} 구도는 충분한 표본이 집계되지 않아 서비스를 제공할 수 없습니다.`
                     );
+                    props.pageGoBack();
                 }
                 const count_ = res.data.cnt;
                 const kills_ = res.data.kills;

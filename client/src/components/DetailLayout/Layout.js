@@ -57,6 +57,7 @@ function Layout(props) {
                     myPickEn={props.myPickEn}
                     enemyPickEn={props.enemyPickEn}
                     lane={props.lane}
+                    pageGoBack={props.pageGoBack}
                 ></DetailTable>
             </GridItem>
             <GridItem>
