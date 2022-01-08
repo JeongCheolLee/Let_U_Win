@@ -1,33 +1,20 @@
 import { React, useState } from 'react';
 // import { useHistory } from 'react-router-dom';
-import { Button } from '@material-ui/core';
+import { IconButton } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-
-const useStyles = makeStyles((theme) => ({
-    laneBtn: {
-        width: '100px',
-        height: '100px',
-        margin: '10px',
-        // backgroundColor:'black',
-        padding: '0px',
-        fontSize: '35px',
-        fontWeight: 'bold',
-        fontFamily: ['궁서', '궁서체'],
-    },
-}));
+import '../css/Home.css';
 
 function ButtonClickable(props) {
     const history = props.history;
     const [lane, setLane] = useState(props.lane.ko);
+
     const btnClickHandler = () => {
         history.push({
-            pathname: '/pickorder',
+            pathname: '/pick',
             state: props.lane.en,
         });
         console.log(lane);
     };
-
-    // const classes = useStyles();
 
     let laneImgSrc;
     switch (props.lane.en) {
@@ -49,10 +36,18 @@ function ButtonClickable(props) {
     }
 
     return (
-        <Button onClick={btnClickHandler} variant="contained" size="large">
+        <IconButton onClick={btnClickHandler} variant="contained" size="large">
             <img src={laneImgSrc}></img>
-            <span>{props.lane.ko}</span>
-        </Button>
+            <span
+                style={{
+                    color: 'black',
+                    fontWeight: 'bold',
+                    fontSize: '2rem',
+                }}
+            >
+                {props.lane.ko}
+            </span>
+        </IconButton>
     );
 }
 
