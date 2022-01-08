@@ -13,7 +13,7 @@ const insideModel = mongoose.Schema({
     cnt: Number,
 });
 
-const champions = {
+const champions = mongoose.Schema({
     Aatrox: insideModel,
     Ahri: insideModel,
     Akali: insideModel,
@@ -171,7 +171,7 @@ const champions = {
     Zilean: insideModel,
     Zoe: insideModel,
     Zyra: insideModel,
-};
+});
 const perksSchema = mongoose.Schema({
     Aatrox: Object,
     Ahri: Object,

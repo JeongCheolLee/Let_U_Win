@@ -10,6 +10,10 @@ function RuneContainerStat(props) {
     const statPerks1 = [5008, 5005, 5007];
     const statPerks2 = [5008, 5002, 5003];
     const statPerks3 = [5001, 5002, 5003];
+
+    if (props.activateList === undefined) {
+        return <div></div>;
+    }
     return (
         <div className="grid-container">
             <div className="grid-item"></div>

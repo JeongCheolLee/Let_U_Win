@@ -12,6 +12,9 @@ function RuneContainer(props) {
     // enemyPick={props.enemyPick} also english
     // const [myPick, setMyPick] = useState(props.myPick);
     // const [enemyPick, setEnemyPick] = useState(props.enemyPick);
+    const [styles, setStyles] = useState([]);
+    const [activation, setActivation] = useState([]);
+    const [stat, setStat] = useState([]);
 
     useEffect(() => {
         console.log(props.lane, props.myPickEn, props.enemyPickEn);
@@ -20,8 +23,9 @@ function RuneContainer(props) {
                 `http://localhost:3001/rune/${props.lane}/${props.myPickEn}/${props.enemyPickEn}`
             )
             .then((res) => {
-                console.log(typeof res.data.list);
-                console.log(props.lane, props.myPickEn, props.enemyPickEn);
+                setStyles(res.data.perkStyles);
+                setActivation(res.data.perkActivation);
+                setStat(res.data.perkStat);
             })
             .catch((err) => {
                 console.log(err);
@@ -32,18 +36,18 @@ function RuneContainer(props) {
         <Grid sx={{ height: '100%' }} container spacing={10} columns={3}>
             <Grid item xs={1}>
                 <RuneContainerMain
-                    style={props.style[0]}
-                    activateList={props.activation[0]}
+                    style={styles[0]}
+                    activateList={activation[0]}
                 />
             </Grid>
             <Grid item xs={1}>
                 <RuneContainerSub
-                    style={props.style[1]}
-                    activateList={props.activation[1]}
+                    style={styles[1]}
+                    activateList={activation[1]}
                 />
             </Grid>
             <Grid item xs={1}>
-                <RuneContainerStat activateList={props.stat} />
+                <RuneContainerStat activateList={stat} />
             </Grid>
         </Grid>
     );
