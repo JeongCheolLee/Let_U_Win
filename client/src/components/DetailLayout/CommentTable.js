@@ -84,6 +84,7 @@ function CommentTable(props) {
 
     const [commentList, setCommentList] = useState([]);
 
+    // 한무루프 유력!
     useEffect(() => {
         axios
             .get(`http://localhost:3001/comments/all/${myPick}/${enemyPick}`)

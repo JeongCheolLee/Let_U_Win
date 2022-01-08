@@ -2,6 +2,7 @@ import { React, useState } from 'react';
 import styled from 'styled-components';
 import RuneContainer from '../RuneContainer';
 import { VersusContainer, DetailTable, CommentInputBox, CommentTable } from '.';
+import StickyBox from 'react-sticky-box';
 
 function Layout(props) {
     const [comment, setComment] = useState('');
@@ -28,6 +29,13 @@ function Layout(props) {
         grid-row: span 3;
     `;
 
+    const CommentSideBar = styled(SideBar)`
+        position: sticky;
+        top: 0;
+        margin-left: 2rem;
+        margin-top: 3rem;
+    `;
+
     return (
         <GridContainer>
             <SideBar></SideBar>
@@ -38,18 +46,20 @@ function Layout(props) {
                     lane={props.lane}
                 ></VersusContainer>
             </GridItem>
-            <SideBar>
-                <CommentTable
-                    myPick={props.myPick}
-                    enemyPick={props.enemyPick}
-                ></CommentTable>
-                <CommentInputBox
-                    myPick={props.myPick}
-                    enemyPick={props.enemyPick}
-                    setComment={setComment}
-                    comment={comment}
-                ></CommentInputBox>
-            </SideBar>
+            <CommentSideBar>
+                <StickyBox offsetTop={20} offsetBottom={20}>
+                    <CommentTable
+                        myPick={props.myPick}
+                        enemyPick={props.enemyPick}
+                    ></CommentTable>
+                    <CommentInputBox
+                        myPick={props.myPick}
+                        enemyPick={props.enemyPick}
+                        setComment={setComment}
+                        comment={comment}
+                    ></CommentInputBox>
+                </StickyBox>
+            </CommentSideBar>
             <GridItem>
                 <DetailTable
                     myPick={props.myPick}
