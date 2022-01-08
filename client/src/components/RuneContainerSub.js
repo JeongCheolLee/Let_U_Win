@@ -6,7 +6,9 @@ function RuneContainerSub(props) {
     const style = props.style;
     const runes = RuneList.filter((e) => e.style === style);
     const activateList = props.activateList; // array
-
+    if (props.style === undefined || props.activateList === undefined) {
+        return <div></div>;
+    }
     return (
         <div className="grid-container">
             <div className="grid-item"></div>

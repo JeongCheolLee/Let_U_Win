@@ -1,6 +1,7 @@
 import { React } from 'react';
 import ButtonClickable from '../components/ButtonClickable.js';
-// import '../css/Home.css';
+import '../css/Home.css';
+
 function Home({ history }) {
     const lanes = [
         {

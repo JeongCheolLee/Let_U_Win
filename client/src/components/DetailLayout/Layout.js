@@ -68,9 +68,9 @@ function Layout(props) {
                     enemyPick={props.enemyPick}
                     myPickEn={props.myPickEn}
                     enemyPickEn={props.enemyPickEn}
-                    style={props.perkStyles}
-                    activation={props.perkActivation}
-                    stat={props.perkStat}
+                    // style={props.perkStyles}
+                    // activation={props.perkActivation}
+                    // stat={props.perkStat}
                 ></RuneContainer>
             </GridItem>
         </GridContainer>
