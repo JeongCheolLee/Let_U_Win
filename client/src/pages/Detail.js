@@ -30,6 +30,7 @@ function Detail({ location, history }) {
             myPickEn={myPickEn}
             enemyPickEn={enemyPickEn}
             lane={lane}
+            pageGoBack={pageGoBack}
             // perkStyles={[8100, 8200]}
             // perkActivation={[
             //     [8112, 8126, 8120, 8105],

@@ -69,34 +69,41 @@ router.get('/:lane/:mypick/:enemypick', (req, res) => {
         // pipe6Group,
     ]).exec((err, docs) => {
         if (err) return res.json({ success: false, err });
-        const data = docs[0][myPick][enemyPick];
-        const perkStyles = [];
-        const perkActivation = [[], []];
-        const win = data.win;
-        const cnt = data.cnt;
-        const { offense, flex, defense } = data.perks.statPerks;
-        const perkStat = [offense, flex, defense];
-        data.perks.styles.forEach((e) => {
-            if (e.description === 'primaryStyle') {
-                perkStyles[0] = e.style;
-                for (perk of e.selections) {
-                    perkActivation[0].push(perk.perk);
+        try {
+            const data = docs[0][myPick][enemyPick];
+            const perkStyles = [];
+            const perkActivation = [[], []];
+            const win = data.win;
+            const cnt = data.cnt;
+            const { offense, flex, defense } = data.perks.statPerks;
+            const perkStat = [offense, flex, defense];
+            data.perks.styles.forEach((e) => {
+                if (e.description === 'primaryStyle') {
+                    perkStyles[0] = e.style;
+                    for (perk of e.selections) {
+                        perkActivation[0].push(perk.perk);
+                    }
+                } else {
+                    perkStyles[1] = e.style;
+                    for (perk of e.selections) {
+                        perkActivation[1].push(perk.perk);
+                    }
                 }
-            } else {
-                perkStyles[1] = e.style;
-                for (perk of e.selections) {
-                    perkActivation[1].push(perk.perk);
-                }
-            }
-        });
-        return res.status(200).json({
-            success: true,
-            perkStyles: perkStyles,
-            perkActivation: perkActivation,
-            perkStat: perkStat,
-            win: win,
-            cnt: cnt,
-        });
+            });
+            return res.status(200).json({
+                success: true,
+                perkStyles: perkStyles,
+                perkActivation: perkActivation,
+                perkStat: perkStat,
+                win: win,
+                cnt: cnt,
+            });
+        } catch (e) {
+            res.status(204).json({
+                success: true,
+                msg: 'not enough data',
+            });
+        }
     });
 });
 

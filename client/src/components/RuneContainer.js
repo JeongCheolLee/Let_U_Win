@@ -23,9 +23,13 @@ function RuneContainer(props) {
                 `http://localhost:3001/rune/${props.lane}/${props.myPickEn}/${props.enemyPickEn}`
             )
             .then((res) => {
-                setStyles(res.data.perkStyles);
-                setActivation(res.data.perkActivation);
-                setStat(res.data.perkStat);
+                if (res.status === 204) {
+                    props.pageGoBack();
+                } else {
+                    setStyles(res.data.perkStyles);
+                    setActivation(res.data.perkActivation);
+                    setStat(res.data.perkStat);
+                }
             })
             .catch((err) => {
                 console.log(err);

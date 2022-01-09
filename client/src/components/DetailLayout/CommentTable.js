@@ -79,7 +79,7 @@ function CommentTable(props) {
     let myPick = props.myPick;
     let enemyPick = props.enemyPick;
 
-    const [commentListLength, setCommentListLength] = useState(0);
+    const [commentListLength, setCommentListLength] = useState(3);
     const [commentCnt, setCommentCnt] = useState(3);
 
     const [commentList, setCommentList] = useState([]);

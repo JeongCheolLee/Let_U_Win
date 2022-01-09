@@ -81,6 +81,7 @@ function Layout(props) {
                     // style={props.perkStyles}
                     // activation={props.perkActivation}
                     // stat={props.perkStat}
+                    pageGoBack={props.pageGoBack}
                 ></RuneContainer>
             </GridItem>
         </GridContainer>
