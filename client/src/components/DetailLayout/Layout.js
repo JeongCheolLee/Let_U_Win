@@ -3,9 +3,17 @@ import styled from 'styled-components';
 import RuneContainer from '../RuneContainer';
 import { VersusContainer, DetailTable, CommentInputBox, CommentTable } from '.';
 import StickyBox from 'react-sticky-box';
+import Button from '@mui/material/Button';
+import { withWidth } from '@material-ui/core';
 
 function Layout(props) {
     const [comment, setComment] = useState('');
+
+    const homeBtnClick = () => {
+        props.history.push({
+            pathname: '/',
+        });
+    };
 
     const GridContainer = styled.div`
         display: grid;
@@ -36,9 +44,21 @@ function Layout(props) {
         margin-top: 3rem;
     `;
 
+    const LeftSideBar = styled(GridItem)`
+        grid-row: span 3;
+    `;
+
     return (
         <GridContainer>
-            <SideBar></SideBar>
+            <LeftSideBar>
+                <Button
+                    size="large"
+                    sx={{ fontWeight: 'bold', width: '6rem', height: '2rem' }}
+                    onClick={homeBtnClick}
+                >
+                    Let U Win
+                </Button>
+            </LeftSideBar>
             <GridItem>
                 <VersusContainer
                     myPick={props.myPick}
