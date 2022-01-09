@@ -20,7 +20,7 @@ function Home({ history }) {
             en: 'bottom',
         },
         {
-            ko: '서포-타',
+            ko: '서포-터',
             en: 'utility',
         },
     ];
@@ -32,11 +32,27 @@ function Home({ history }) {
                     fontSize: '40px',
                     fontWeight: 'bold',
                     fontFamily: ['궁서', '궁서체'],
-                    marginTop: '5%',
-                    marginBottom: '10%',
+
+                    marginBottom: '5%',
                 }}
             >
-                어디로 가야 하오?
+                <div
+                    style={{
+                        display: 'flex',
+                        fontSize: '2rem',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                    }}
+                >
+                    <img src="/images/leesin/Leesin.png"></img>
+                    <span>
+                        그대의 승리를 위해 <br></br>챔피언 상성을 분석하고 룬을
+                        추천해주겠소,
+                        <br></br>
+                        <br></br>
+                        그럼 가장 먼저, 어디로 가야 하오?
+                    </span>
+                </div>
             </div>
             {lanes.map((item) => {
                 return (

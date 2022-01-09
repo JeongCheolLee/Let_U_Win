@@ -137,150 +137,198 @@ export default function DetailTable(props) {
     console.log();
 
     return (
-        <table
-            id="detailTable"
-            style={{
-                width: '100%',
-                height: '80%',
-                fontSize: '1.3rem',
-                fontWeight: 'bold',
-                textAlign: 'center',
-            }}
-        >
-            <thead>
-                <td>매치업 평균 데이터</td>
-                <td></td>
-                <td>매치업 평균 데이터</td>
-            </thead>
-            <tbody>
-                <tr>
-                    <td
-                        className={
-                            findWinner(totalWinRate, 1 - totalWinRate)[0]
-                        }
-                    >
-                        {(totalWinRate * 100).toFixed(2)}%
-                    </td>
+        <div id="wrapper">
+            <table
+                id="detailTable"
+                style={{
+                    width: '100%',
+                    height: '80%',
+                    fontSize: '1.3rem',
+                    fontWeight: 'bold',
+                    textAlign: 'center',
+                }}
+            >
+                <thead>
+                    <td>매치업 평균 데이터</td>
+                    <td></td>
+                    <td>매치업 평균 데이터</td>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td
+                            className={
+                                findWinner(totalWinRate, 1 - totalWinRate)[0]
+                            }
+                        >
+                            {(totalWinRate * 100).toFixed(2)}%
+                        </td>
 
-                    <Tooltip
-                        title={`전체 승률 :해당 챔피언의 모든 포지션에서의 승률을 의미합니다.`}
-                        followCursor={true}
-                    >
-                        <td>전체 승률 </td>
-                    </Tooltip>
+                        <Tooltip
+                            title={`전체 승률 :해당 챔피언의 모든 포지션에서의 승률을 의미합니다.`}
+                            followCursor={true}
+                        >
+                            <td>전체 승률 </td>
+                        </Tooltip>
 
-                    <td
-                        className={
-                            findWinner(totalWinRate, 1 - totalWinRate)[1]
-                        }
-                    >
-                        {100 - (totalWinRate * 100).toFixed(2)}%
-                    </td>
-                </tr>
-                <tr className="tableBorder">
-                    <td
-                        className={
-                            findWinner(relativeWinRate, 1 - relativeWinRate)[0]
-                        }
-                    >
-                        {(relativeWinRate * 100).toFixed(2)}%
-                    </td>
-                    <Tooltip
-                        title={`포지션 승률 : 해당 챔피언의 ${props.lane} 포지션에서의 승률을 의미합니다.
+                        <td
+                            className={
+                                findWinner(totalWinRate, 1 - totalWinRate)[1]
+                            }
+                        >
+                            {100 - (totalWinRate * 100).toFixed(2)}%
+                        </td>
+                    </tr>
+                    <tr className="tableBorder">
+                        <td
+                            className={
+                                findWinner(
+                                    relativeWinRate,
+                                    1 - relativeWinRate
+                                )[0]
+                            }
+                        >
+                            {(relativeWinRate * 100).toFixed(2)}%
+                        </td>
+                        <Tooltip
+                            title={`포지션 승률 : 해당 챔피언의 ${props.lane} 포지션에서의 승률을 의미합니다.
                         ${props.myPick} 챔피언은 ${props.enemyPick} 챔피언을 ${count} 회 상대했으며, ${wins}회 승리했네요!`}
-                        followCursor={true}
-                    >
-                        <td>포지션 승률</td>
-                    </Tooltip>
+                            followCursor={true}
+                        >
+                            <td>포지션 승률</td>
+                        </Tooltip>
 
-                    <td
-                        className={
-                            findWinner(relativeWinRate, 1 - relativeWinRate)[1]
-                        }
-                    >
-                        {((1 - relativeWinRate) * 100).toFixed(2)}%
-                    </td>
-                </tr>
-                <tr>
-                    <td className={findWinner(kda, enemyKda)[0]}>{kda}</td>
-                    <Tooltip
-                        title={`KDA : ${props.lane} 포지션에서 ${props.myPick} vs  ${props.enemyPick} 구도일 때 KDA 입니다.
+                        <td
+                            className={
+                                findWinner(
+                                    relativeWinRate,
+                                    1 - relativeWinRate
+                                )[1]
+                            }
+                        >
+                            {((1 - relativeWinRate) * 100).toFixed(2)}%
+                        </td>
+                    </tr>
+                    <tr>
+                        <td className={findWinner(kda, enemyKda)[0]}>{kda}</td>
+                        <Tooltip
+                            title={`KDA : ${props.lane} 포지션에서 ${props.myPick} vs  ${props.enemyPick} 구도일 때 KDA 입니다.
                         ${props.myPick} 챔피언은 ${props.enemyPick} 챔피언을 ${count} 회 상대했으며,
                         총 ${kills} 킬, ${assists} 어시스트, ${deaths} 데스를 기록했네요!`}
-                        followCursor={true}
-                    >
-                        <td>KDA</td>
-                    </Tooltip>
-                    <td className={findWinner(kda, enemyKda)[1]}>{enemyKda}</td>
-                </tr>
-                <tr>
-                    <td
-                        className={findWinner(totalDamage, enemyTotalDamage)[0]}
-                    >
-                        {totalDamage}
-                    </td>
+                            followCursor={true}
+                        >
+                            <td>KDA</td>
+                        </Tooltip>
+                        <td className={findWinner(kda, enemyKda)[1]}>
+                            {enemyKda}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td
+                            className={
+                                findWinner(totalDamage, enemyTotalDamage)[0]
+                            }
+                        >
+                            {totalDamage}
+                        </td>
 
-                    <Tooltip
-                        title={`챔피언에게 가한 피해 : ${props.lane} 포지션에서 ${props.myPick} vs  ${props.enemyPick} 구도일 때 적에게 입힌 피해량 입니다.
+                        <Tooltip
+                            title={`챔피언에게 가한 피해 : ${props.lane} 포지션에서 ${props.myPick} vs  ${props.enemyPick} 구도일 때 적에게 입힌 피해량 입니다.
                         `}
-                        followCursor={true}
-                    >
-                        <td> 챔피언에게 가한 피해 </td>
-                    </Tooltip>
+                            followCursor={true}
+                        >
+                            <td> 챔피언에게 가한 피해 </td>
+                        </Tooltip>
 
-                    <td
-                        className={findWinner(totalDamage, enemyTotalDamage)[1]}
-                    >
-                        {enemyTotalDamage}
-                    </td>
-                </tr>
-                <tr>
-                    <td className={findWinner(champLevel, enemyChampLevel)[0]}>
-                        {champLevel}
-                    </td>
-                    <Tooltip
-                        title={`레벨 : ${props.lane} 포지션에서 ${props.myPick} vs  ${props.enemyPick} 구도일 때 매치 종료 시점의 레벨입니다`}
-                        followCursor={true}
-                    >
-                        <td> 레벨 </td>
-                    </Tooltip>
-                    <td className={findWinner(champLevel, enemyChampLevel)[1]}>
-                        {enemyChampLevel}
-                    </td>
-                </tr>
-                <tr>
-                    <td className={findWinner(myPickRate, enemyPickRate)[0]}>
-                        {(myPickRate * 100).toFixed(2)}%
-                    </td>
-                    <td> 전체 픽률</td>
-                    <td className={findWinner(myPickRate, enemyPickRate)[1]}>
-                        {(enemyPickRate * 100).toFixed(2)}%
-                    </td>
-                </tr>
-                <tr>
-                    <td
-                        className={findWinner(myLanePickRate, enemyPickRate)[0]}
-                    >
-                        {(myLanePickRate * 100).toFixed(2)}%
-                    </td>
-                    <td> 포지션 픽률</td>
-                    <td
-                        className={findWinner(myLanePickRate, enemyPickRate)[1]}
-                    >
-                        {(enemyLanePickRate * 100).toFixed(2)}%
-                    </td>
-                </tr>
-                <tr>
-                    <td className={findWinner(myBanRate, enemyBanRate)[0]}>
-                        {myBanRate}%
-                    </td>
-                    <td>밴률 </td>
-                    <td className={findWinner(myBanRate, enemyBanRate)[1]}>
-                        {enemyBanRate}%
-                    </td>
-                </tr>
-            </tbody>
-            <tfoot></tfoot>
-        </table>
+                        <td
+                            className={
+                                findWinner(totalDamage, enemyTotalDamage)[1]
+                            }
+                        >
+                            {enemyTotalDamage}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td
+                            className={
+                                findWinner(champLevel, enemyChampLevel)[0]
+                            }
+                        >
+                            {champLevel}
+                        </td>
+                        <Tooltip
+                            title={`레벨 : ${props.lane} 포지션에서 ${props.myPick} vs  ${props.enemyPick} 구도일 때 매치 종료 시점의 레벨입니다`}
+                            followCursor={true}
+                        >
+                            <td> 레벨 </td>
+                        </Tooltip>
+                        <td
+                            className={
+                                findWinner(champLevel, enemyChampLevel)[1]
+                            }
+                        >
+                            {enemyChampLevel}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td
+                            className={findWinner(myPickRate, enemyPickRate)[0]}
+                        >
+                            {(myPickRate * 100).toFixed(2)}%
+                        </td>
+                        <td> 전체 픽률</td>
+                        <td
+                            className={findWinner(myPickRate, enemyPickRate)[1]}
+                        >
+                            {(enemyPickRate * 100).toFixed(2)}%
+                        </td>
+                    </tr>
+                    <tr>
+                        <td
+                            className={
+                                findWinner(myLanePickRate, enemyPickRate)[0]
+                            }
+                        >
+                            {(myLanePickRate * 100).toFixed(2)}%
+                        </td>
+                        <td> 포지션 픽률</td>
+                        <td
+                            className={
+                                findWinner(myLanePickRate, enemyPickRate)[1]
+                            }
+                        >
+                            {(enemyLanePickRate * 100).toFixed(2)}%
+                        </td>
+                    </tr>
+                    <tr>
+                        <td className={findWinner(myBanRate, enemyBanRate)[0]}>
+                            {myBanRate}%
+                        </td>
+                        <td>밴률 </td>
+                        <td className={findWinner(myBanRate, enemyBanRate)[1]}>
+                            {enemyBanRate}%
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot></tfoot>
+            </table>
+            {/* 
+            <div>
+                <h1>분-석</h1>
+            </div>
+            <div
+                style={{
+                    marginTop: '2rem',
+                    display: 'flex',
+                    fontSize: '1rem',
+                    fontWeight: 'bold',
+                }}
+            >
+                <img width="150" src="/images/leesin/Leesin.png"></img>
+                <li>
+                    총 8개의 지표중, {props.myPick} 챔피언은 {betterCnt} 개의
+                    지표에서 앞서는 중이오
+                </li>
+            </div> */}
+        </div>
     );
 }

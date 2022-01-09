@@ -6,8 +6,8 @@ import ImageListItemBar from '@material-ui/core/ImageListItemBar';
 
 const useStyles = makeStyles((theme) => ({
     imageList: {
-        width: 560,
-        height: 550,
+        width: 588,
+        height: 500,
         alignContent: 'flex-start',
     },
     title: {
@@ -33,7 +33,7 @@ export default function ImageListHjlee(props) {
             <ImageList rowHeight="auto" className={classes.imageList} cols={6}>
                 {itemData.map((item) => (
                     <ImageListItem
-                        style={{ height: '90px', width: '90px' }}
+                        style={{ height: '80px', width: '80px' }}
                         key={item.id}
                     >
                         <img
@@ -43,7 +43,7 @@ export default function ImageListHjlee(props) {
                                 item.image.full
                             }
                             alt={item.name}
-                            style={{ cursor: 'pointer', width: '90px' }}
+                            style={{ cursor: 'pointer', width: '80px' }}
                         />
                         <ImageListItemBar
                             title={item.name}
@@ -51,7 +51,7 @@ export default function ImageListHjlee(props) {
                                 title: classes.title,
                                 titleWrap: classes.titleWrap,
                             }}
-                            style={{ height: '30px', textAlign: 'left' }}
+                            style={{ height: '20px', textAlign: 'left' }}
                         />
                     </ImageListItem>
                 ))}

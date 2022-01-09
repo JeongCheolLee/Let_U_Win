@@ -19,7 +19,7 @@ function VersusContainer(props) {
             laneTitle = '원-딜';
             break;
         case 'utility':
-            laneTitle = '서포-타';
+            laneTitle = '서포-터';
             break;
     }
 
