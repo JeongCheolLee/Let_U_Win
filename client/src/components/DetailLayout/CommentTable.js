@@ -86,8 +86,8 @@ function CommentTable(props) {
         axios
             .get(`http://localhost:3001/comments/all/${myPick}/${enemyPick}`)
             .then((res) => {
-                // setCommentList(res.data.list.slice(commentCnt - 3, commentCnt));
-                // setCommentListLength(res.data.list.length);
+                setCommentList(res.data.list.slice(commentCnt - 3, commentCnt));
+                setCommentListLength(res.data.list.length);
             })
             .catch((err) => {
                 console.log(err);

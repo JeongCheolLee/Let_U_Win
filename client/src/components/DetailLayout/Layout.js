@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import RuneContainer from '../RuneContainer';
 import { VersusContainer, DetailTable, CommentInputBox, CommentTable } from '.';
 import StickyBox from 'react-sticky-box';
-import Button from '@mui/material/Button';
-import { withWidth } from '@material-ui/core';
+import IconButton from '@mui/material/IconButton';
+// import { styled } from '@mui/material';
 
 function Layout(props) {
     const [comment, setComment] = useState('');
@@ -51,13 +51,7 @@ function Layout(props) {
     return (
         <GridContainer>
             <LeftSideBar>
-                <Button
-                    size="large"
-                    sx={{ fontWeight: 'bold', width: '6rem', height: '2rem' }}
-                    onClick={homeBtnClick}
-                >
-                    Let U Win
-                </Button>
+                <IconButton onClick={homeBtnClick}>Let U Win</IconButton>
             </LeftSideBar>
             <GridItem>
                 <VersusContainer
