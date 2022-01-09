@@ -9,6 +9,7 @@ export default function PaginationIcon(props) {
             return 0;
         }
         props.setCommentCnt(commentCnt - 3);
+        props.setFunc(!props.refresh);
     }
 
     function RightButtonClickHandler(commentCnt) {
@@ -16,6 +17,7 @@ export default function PaginationIcon(props) {
             return 0;
         }
         props.setCommentCnt(commentCnt + 3);
+        props.setFunc(!props.refresh);
     }
 
     return (

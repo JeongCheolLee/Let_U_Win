@@ -6,7 +6,6 @@ import ThumbDownIcon from '@mui/icons-material/ThumbDown';
 import Pagination from './Pagination.js';
 
 function likeClickHandler(recordId, likeBefore) {
-    console.log('likeClickHandler start working!');
     axios
         .patch(`http://localhost:3001/comments/rating/like/${recordId}`, {
             like: likeBefore + 1,
@@ -21,7 +20,6 @@ function likeClickHandler(recordId, likeBefore) {
 }
 
 function dislikeClickHandler(recordId, dislikeBefore) {
-    console.log('dislikeClickHandler start working!');
     axios
         .patch(`http://localhost:3001/comments/rating/dislike/${recordId}`, {
             dislike: dislikeBefore + 1,
@@ -81,10 +79,9 @@ function CommentTable(props) {
 
     const [commentListLength, setCommentListLength] = useState(3);
     const [commentCnt, setCommentCnt] = useState(3);
-
     const [commentList, setCommentList] = useState([]);
+    const [refresh, setRefresh] = useState(true);
 
-    // 한무루프 유력!
     useEffect(() => {
         axios
             .get(`http://localhost:3001/comments/all/${myPick}/${enemyPick}`)
@@ -95,7 +92,7 @@ function CommentTable(props) {
             .catch((err) => {
                 console.log(err);
             });
-    }, [commentList]);
+    }, [refresh]);
 
     return (
         <div
@@ -112,7 +109,7 @@ function CommentTable(props) {
                 <Comment
                     list={comment}
                     key={comment._id}
-                    setFunc={setCommentList}
+                    setFunc={setRefresh}
                 />
             ))}
             <div
@@ -126,6 +123,8 @@ function CommentTable(props) {
                     setCommentCnt={setCommentCnt}
                     commentCnt={commentCnt}
                     commentListLength={commentListLength}
+                    setFunc={setRefresh}
+                    refresh={refresh}
                 ></Pagination>
                 <div style={{ display: 'absolute', bottom: '1px' }}>
                     {`${commentCnt / 3} / ${Math.ceil(commentListLength / 3)}`}
