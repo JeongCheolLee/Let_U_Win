@@ -51,17 +51,13 @@ function Layout(props) {
     return (
         <GridContainer>
             <LeftSideBar>
-                <span
-                    style={{
-                        fontWeight: 'bold',
-                        width: '7rem',
-                        height: '2rem',
-                    }}
+                <Button
+                    size="large"
+                    sx={{ fontWeight: 'bold', width: '7rem', height: '2rem' }}
+                    onClick={homeBtnClick}
                 >
-                    <Button size="large" onClick={homeBtnClick}>
-                        Let U Win
-                    </Button>
-                </span>
+                    Let U Win
+                </Button>
             </LeftSideBar>
             <GridItem>
                 <VersusContainer
