@@ -47,13 +47,22 @@ export default function MultilineTextFields(props) {
 
     return (
         <div id="wrappeer">
-            <div style={{ display: 'flex', paddingTop: '10px', width: '100%' }}>
+            <div
+                style={{
+                    display: 'flex',
+                    paddingTop: '10px',
+                    width: '100%',
+                    height: '7rem',
+                    justifyContent: 'space-between',
+                }}
+            >
                 <TextField
                     style={{
                         backgroundColor: 'white',
                         fontSize: '0.1rem',
                         color: 'yellow',
                         fontFamily: ['궁서', '궁서체'],
+                        width: '75%',
                     }}
                     placeholder={defaultValue}
                     label="챔피언 팁 전수"
@@ -62,8 +71,12 @@ export default function MultilineTextFields(props) {
                     value={value}
                     onChange={handleChange}
                 />
-                <Button variant="contained" onClick={clickHandler}>
-                    제출
+                <Button
+                    sx={{ width: '15%', height: '100%' }}
+                    variant="contained"
+                    onClick={clickHandler}
+                >
+                    전수!
                 </Button>
             </div>
         </div>

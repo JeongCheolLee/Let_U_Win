@@ -1,6 +1,10 @@
 import { React } from 'react';
 import ButtonClickable from '../components/ButtonClickable.js';
 import '../css/Home.css';
+<<<<<<< HEAD
+=======
+
+>>>>>>> 54ce4a8eab836c038dfe366f2a7466df2c09b912
 function Home({ history }) {
     const lanes = [
         {

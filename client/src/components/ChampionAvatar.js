@@ -22,7 +22,6 @@ function ChampionAvatar(props) {
         height: 0,
         paddingTop: '80%',
         position: 'relative',
-        // backgroundColor: 'black',
         margin: '8% auto auto',
     });
 
@@ -49,7 +48,11 @@ function ChampionAvatar(props) {
     return (
         <>
             <AvatarDiv>
-                <CustomAvatar alt={championNameEn} src={imgUrl}></CustomAvatar>
+                <CustomAvatar
+                    className="myPick"
+                    alt={championNameEn}
+                    src={imgUrl}
+                ></CustomAvatar>
             </AvatarDiv>
             <NameBar>{championName}</NameBar>
         </>
