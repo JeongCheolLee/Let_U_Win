@@ -155,7 +155,7 @@ function Pick({ history, match, location }) {
             >
                 <div style={{ flex: 1 }}>
                     {myPick === 'none' && (
-                        <div>
+                        <div style={{ fontSize: '1rem' }}>
                             <h2>플레이 할 챔피언을 선택해주시오</h2>
                             <SearchBar
                                 label="챔피언명을 입력해주세요"
@@ -208,7 +208,7 @@ function Pick({ history, match, location }) {
 
                 <div align="center" style={{ flex: 1 }}>
                     {enemyPick === 'none' && (
-                        <div>
+                        <div style={{ fontSize: '1rem' }}>
                             <h2>상대방 챔피언을 선택해주시오</h2>
                             <SearchBar
                                 label="챔피언명을 입력해주세요"
