@@ -71,7 +71,7 @@ function Layout(props) {
                 ></DetailTable>
             </GridItem>
             <GridItem>
-                <h1 style={{ fontWeight: 'bold' }}>루-운</h1>
+                <h1 style={{ fontWeight: 'bold' }}>추천 룬</h1>
                 <RuneContainer
                     lane={props.lane}
                     myPick={props.myPick}
