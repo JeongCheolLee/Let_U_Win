@@ -7,7 +7,7 @@ import Pagination from './Pagination.js';
 
 function likeClickHandler(recordId, likeBefore) {
     axios
-        .patch(`http://127.0.0.1:3001/comments/rating/like/${recordId}`, {
+        .patch(`http://3.35.222.47:3001/comments/rating/like/${recordId}`, {
             like: likeBefore + 1,
         })
         .then((res) => {
@@ -21,7 +21,7 @@ function likeClickHandler(recordId, likeBefore) {
 
 function dislikeClickHandler(recordId, dislikeBefore) {
     axios
-        .patch(`http://127.0.0.1:3001/comments/rating/dislike/${recordId}`, {
+        .patch(`http://3.35.222.47:3001/comments/rating/dislike/${recordId}`, {
             dislike: dislikeBefore + 1,
         })
         .then((res) => {
@@ -84,7 +84,7 @@ function CommentTable(props) {
 
     useEffect(() => {
         axios
-            .get(`http://127.0.0.1:3001/comments/all/${myPick}/${enemyPick}`)
+            .get(`http://3.35.222.47:3001/comments/all/${myPick}/${enemyPick}`)
             .then((res) => {
                 setCommentList(res.data.list.slice(commentCnt - 3, commentCnt));
                 setCommentListLength(res.data.list.length);

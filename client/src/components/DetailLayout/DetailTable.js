@@ -31,7 +31,9 @@ export default function DetailTable(props) {
 
     useEffect(() => {
         axios
-            .get(`http://127.0.0.1:3001/statistic/winrate/${myPickEn}/${lane}`)
+            .get(
+                `http://3.35.222.47:3001/statistic/winrate/${myPickEn}/${lane}`
+            )
             .then((res) => {
                 setTotalWinRate(res.data.winRate);
             })
@@ -40,7 +42,7 @@ export default function DetailTable(props) {
             });
         axios
             .get(
-                `http://127.0.0.1:3001/statistic/kda/${lane}/${myPickEn}/${enemyPickEn}`
+                `http://3.35.222.47:3001/statistic/kda/${lane}/${myPickEn}/${enemyPickEn}`
             )
             .then((res) => {
                 if (res.status === 204) {
@@ -72,7 +74,7 @@ export default function DetailTable(props) {
             });
         axios
             .get(
-                `http://127.0.0.1:3001/statistic/kda/${lane}/${enemyPickEn}/${myPickEn}`
+                `http://3.35.222.47:3001/statistic/kda/${lane}/${enemyPickEn}/${myPickEn}`
             )
             .then((res) => {
                 const count = res.data.cnt;
@@ -90,7 +92,7 @@ export default function DetailTable(props) {
                 console.log(err);
             });
         axios
-            .get(`http://127.0.0.1:3001/statistic/banrate/${myPickEn}`)
+            .get(`http://3.35.222.47:3001/statistic/banrate/${myPickEn}`)
             .then((res) => {
                 setMyBanRate(res.data.banRate);
             })
@@ -98,7 +100,7 @@ export default function DetailTable(props) {
                 console.log(err);
             });
         axios
-            .get(`http://127.0.0.1:3001/statistic/banrate/${enemyPickEn}`)
+            .get(`http://3.35.222.47:3001/statistic/banrate/${enemyPickEn}`)
             .then((res) => {
                 setEnemyBanRate(res.data.banRate);
             })
@@ -106,7 +108,9 @@ export default function DetailTable(props) {
                 console.log(err);
             });
         axios
-            .get(`http://127.0.0.1:3001/statistic/pickrate/${myPickEn}/${lane}`)
+            .get(
+                `http://3.35.222.47:3001/statistic/pickrate/${myPickEn}/${lane}`
+            )
             .then((res) => {
                 setMyPickRate(res.data.totalPickRate);
                 setMyLanePickRate(res.data.lanePickRate);
@@ -116,7 +120,7 @@ export default function DetailTable(props) {
             });
         axios
             .get(
-                `http://127.0.0.1:3001/statistic/pickrate/${enemyPickEn}/${lane}`
+                `http://3.35.222.47:3001/statistic/pickrate/${enemyPickEn}/${lane}`
             )
             .then((res) => {
                 setEnemyPickRate(res.data.totalPickRate);
