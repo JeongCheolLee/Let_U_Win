@@ -20,7 +20,16 @@ mongoose
     .catch((err) => console.log(err));
 
 // cors
-app.use(cors({ origin: ['http://localhost:3000', 'https://web.postman.co'] }));
+app.use(
+    cors({
+        origin: [
+            'http://localhost:3000',
+            'https://web.postman.co',
+            '172.18.0.3',
+            '172.18.0.2',
+        ],
+    })
+);
 
 // application/x-www-form-urlencoded 로 생긴것을 분석가능하게 해주는 코드
 app.use(express.urlencoded({ extended: true }));

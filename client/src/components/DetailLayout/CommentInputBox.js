@@ -28,7 +28,7 @@ export default function MultilineTextFields(props) {
         };
         axios
             .post(
-                'http://localhost:3001/comments/',
+                'http://172.18.0.2:3001/comments/',
                 JSON.stringify(commentData),
                 {
                     headers: {

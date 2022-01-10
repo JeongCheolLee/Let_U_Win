@@ -1,1 +1,1 @@
-GET http://localhost:3001/rune/top/aatrox/akali
+GET http://172.18.0.2:3001/rune/top/aatrox/akali
