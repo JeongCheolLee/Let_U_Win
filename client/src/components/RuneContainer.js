@@ -20,7 +20,7 @@ function RuneContainer(props) {
         console.log(props.lane, props.myPickEn, props.enemyPickEn);
         axios
             .get(
-                `http://127.0.0.1:3001/rune/${props.lane}/${props.myPickEn}/${props.enemyPickEn}`
+                `http://3.35.222.47:3001/rune/${props.lane}/${props.myPickEn}/${props.enemyPickEn}`
             )
             .then((res) => {
                 if (res.status === 204) {
