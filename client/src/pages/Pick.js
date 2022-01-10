@@ -2,6 +2,9 @@ import { React, useState, useCallback, useEffect } from 'react';
 import ImageListHjlee from '../components/ImageListHjlee';
 import SearchBar from '../components/SearchBar';
 import axios from 'axios';
+import CancelIcon from '@mui/icons-material/Cancel';
+import { IconButton } from '@material-ui/core';
+import CheckIcon from '@mui/icons-material/Check';
 // import itemDataAll from '../data/itemDataAll';
 
 function Pick({ history, match, location }) {
@@ -12,8 +15,6 @@ function Pick({ history, match, location }) {
     const [searchText, setSearchText] = useState('');
     const [myPick, setMyPick] = useState('none');
     const [enemyPick, setEnemyPick] = useState('none');
-    const [myPickEn, setMyPickEn] = useState('none');
-    const [enemyPickEn, setEnemyPickEn] = useState('none');
     const [myImgUrl, setMyImgUrl] = useState('');
     const [enemyImgUrl, setEnemyImgUrl] = useState('');
 
@@ -55,10 +56,6 @@ function Pick({ history, match, location }) {
             setFilteredChampionsList((prevState) => {
                 let temp = [];
                 championsList.map((item) => {
-                    // 포함하면
-                    // if(item.name.includes(searchText)) {
-                    //     temp.push(item)
-                    // }
                     if (item.name.startsWith(searchText)) {
                         temp.push(item);
                     }
@@ -82,7 +79,6 @@ function Pick({ history, match, location }) {
 
     useEffect(() => {
         if (myPick !== 'none') {
-            console.log('저 실행 시작합니다~!');
             const temp =
                 championsList[championsList.findIndex((i) => i.name === myPick)]
                     .id;
@@ -106,17 +102,6 @@ function Pick({ history, match, location }) {
             );
         }
     }, [enemyPick]);
-
-    function getImageUri() {
-        console.log('저 실행 시작합니다~!');
-        setMyPickEn(
-            championsList[championsList.findIndex((i) => i.name === myPick)].id
-        );
-        console.log(myPickEn);
-        setMyImgUrl(
-            `http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${myPickEn}_0.jpg`
-        );
-    }
 
     const getSearchTextFromSearchBar = useCallback((text) => {
         setSearchText(text);
@@ -177,12 +162,27 @@ function Pick({ history, match, location }) {
                                 <img
                                     style={{ width: '588px' }}
                                     src={myImgUrl}
+                                    alt="waiting"
                                 ></img>
                                 <div>
                                     <h1>{myPick}</h1>
-                                    <button onClick={onClickMyPickCancelBtn}>
-                                        다시 선택하기
-                                    </button>
+                                    <IconButton
+                                        onClick={onClickMyPickCancelBtn}
+                                    >
+                                        <div style={{ display: 'flex' }}>
+                                            <CancelIcon
+                                                sx={{ color: 'black' }}
+                                            ></CancelIcon>
+                                            <span
+                                                style={{
+                                                    fontSize: '1rem',
+                                                    color: 'black',
+                                                }}
+                                            >
+                                                다시 선택하기
+                                            </span>
+                                        </div>
+                                    </IconButton>
                                 </div>
                             </div>
                         </div>
@@ -200,9 +200,28 @@ function Pick({ history, match, location }) {
                             width: '100%',
                         }}
                         src="/images/icons/vs_icon.png"
+                        alt="waiting"
                     ></img>
                     {enemyPick !== 'none' && myPick !== 'none' && (
-                        <button onClick={moveToDetail}>확정!</button>
+                        <IconButton onClick={moveToDetail}>
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    width: '100%',
+                                }}
+                            >
+                                <CheckIcon
+                                    fontSize="large"
+                                    sx={{ color: 'red' }}
+                                ></CheckIcon>
+                                <span
+                                    style={{ fontSize: '2rem', color: 'red' }}
+                                >
+                                    {' '}
+                                    확정!
+                                </span>
+                            </div>
+                        </IconButton>
                     )}
                 </div>
 
@@ -230,12 +249,27 @@ function Pick({ history, match, location }) {
                                 <img
                                     style={{ width: '588px' }}
                                     src={enemyImgUrl}
+                                    alt="waiting"
                                 ></img>
                                 <div>
                                     <h1>{enemyPick}</h1>
-                                    <button onClick={onClickEnemyPickCancelBtn}>
-                                        다시 선택하기
-                                    </button>
+                                    <IconButton
+                                        onClick={onClickEnemyPickCancelBtn}
+                                    >
+                                        <div style={{ display: 'flex' }}>
+                                            <CancelIcon
+                                                sx={{ color: 'black' }}
+                                            ></CancelIcon>
+                                            <span
+                                                style={{
+                                                    fontSize: '1rem',
+                                                    color: 'black',
+                                                }}
+                                            >
+                                                다시 선택하기
+                                            </span>
+                                        </div>
+                                    </IconButton>
                                 </div>
                             </div>
                         </div>
