@@ -37,7 +37,7 @@ function Pick({ history, match, location }) {
 
     useEffect(() => {
         axios
-            .get('http://172.18.0.2:3001/champions/all')
+            .get('http://127.0.0.1:3001/champions/all')
             .then((res) => {
                 let list = res.data.list;
                 list.sort(function (a, b) {
