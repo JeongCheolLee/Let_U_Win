@@ -1,0 +1,41 @@
+{
+  "name": "let_u_win",
+  "version": "1.0.0",
+  "description": "We can give you the suggestion about pick at the lane phase.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JeongCheolLee/Let_U_Win.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JeongCheolLee/Let_U_Win/issues"
+  },
+  "homepage": "https://github.com/JeongCheolLee/Let_U_Win#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "is-binary-path": "^2.1.0",
+    "is-glob": "^4.0.3",
+    "mongoose": "^6.0.7",
+    "negotiator": "^0.6.2",
+    "normalize-path": "^3.0.0",
+    "object-assign": "^4.1.1",
+    "on-finished": "^2.3.0",
+    "parseurl": "^1.3.3",
+    "raw-body": "^2.4.1",
+    "readdirp": "^3.6.0",
+    "safer-buffer": "^2.1.2",
+    "statuses": "^2.0.1",
+    "string-width": "^5.0.1",
+    "to-regex-range": "^5.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.13"
+  }
+}
