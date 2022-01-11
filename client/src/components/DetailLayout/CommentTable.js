@@ -4,38 +4,63 @@ import { IconButton } from '@material-ui/core';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbDownIcon from '@mui/icons-material/ThumbDown';
 import Pagination from './Pagination.js';
+import BackendURL from '../../shared/BackendURL';
 
-function likeClickHandler(recordId, likeBefore) {
-    axios
-        .patch(`http://3.35.222.47:3001/comments/rating/like/${recordId}`, {
-            like: likeBefore + 1,
-        })
-        .then((res) => {
-            console.log(res);
-            console.log(`like was ${likeBefore}, now ${likeBefore + 1}`);
-        })
-        .catch((err) => {
-            console.log(err);
-        });
-}
+function Comment({ list, setRefresh, refresh }) {
+    const [liked, setLiked] = useState(false);
+    const [disliked, setdisLiked] = useState(false);
 
-function dislikeClickHandler(recordId, dislikeBefore) {
-    axios
-        .patch(`http://3.35.222.47:3001/comments/rating/dislike/${recordId}`, {
-            dislike: dislikeBefore + 1,
-        })
-        .then((res) => {
-            console.log(res);
-            console.log(
-                `dislike was ${dislikeBefore}, now ${dislikeBefore + 1}`
-            );
-        })
-        .catch((err) => {
-            console.log(err);
-        });
-}
+    useEffect(() => {
+        if (liked !== false) {
+            const recordId = list._id;
+            let likeBefore = list.like;
+            axios
+                .patch(`${BackendURL}/comments/rating/like/${recordId}`, {
+                    like: likeBefore + 1,
+                })
+                .then((res) => {
+                    console.log(
+                        `like was ${likeBefore}, now ${likeBefore + 1}`
+                    );
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
 
-function Comment({ list, setFunc }) {
+            setRefresh(!refresh);
+        }
+    }, [liked]);
+
+    useEffect(() => {
+        if (disliked !== false) {
+            const recordId = list._id;
+            let dislikeBefore = list.dislike;
+
+            axios
+                .patch(`${BackendURL}/comments/rating/dislike/${recordId}`, {
+                    dislike: dislikeBefore + 1,
+                })
+                .then((res) => {
+                    console.log(res);
+                    console.log(
+                        `dislike was ${dislikeBefore}, now ${dislikeBefore + 1}`
+                    );
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+            setRefresh(!refresh);
+        }
+    }, [disliked]);
+
+    function likeClickHandler() {
+        setLiked(liked + 1);
+    }
+
+    function dislikeClickHandler() {
+        setdisLiked(disliked + 1);
+    }
+
     return (
         <div id="wrapper" style={{ height: '8rem' }}>
             <div
@@ -50,8 +75,7 @@ function Comment({ list, setFunc }) {
                 <div style={{ textAlign: 'right' }}>
                     <IconButton
                         onClick={() => {
-                            likeClickHandler(list._id, list.like);
-                            setFunc([]);
+                            likeClickHandler();
                             console.log('rendering test');
                         }}
                     >
@@ -60,8 +84,7 @@ function Comment({ list, setFunc }) {
                     {list.like}
                     <IconButton
                         onClick={() => {
-                            dislikeClickHandler(list._id, list.dislike);
-                            setFunc([]);
+                            dislikeClickHandler();
                         }}
                     >
                         <ThumbDownIcon fontSize="small"></ThumbDownIcon>
@@ -84,7 +107,7 @@ function CommentTable(props) {
 
     useEffect(() => {
         axios
-            .get(`http://3.35.222.47:3001/comments/all/${myPick}/${enemyPick}`)
+            .get(`${BackendURL}/comments/all/${myPick}/${enemyPick}`)
             .then((res) => {
                 setCommentList(res.data.list.slice(commentCnt - 3, commentCnt));
                 setCommentListLength(res.data.list.length);
@@ -109,7 +132,8 @@ function CommentTable(props) {
                 <Comment
                     list={comment}
                     key={comment._id}
-                    setFunc={setRefresh}
+                    setRefresh={setRefresh}
+                    refresh={refresh}
                 />
             ))}
             <div

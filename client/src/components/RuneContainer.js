@@ -4,6 +4,7 @@ import { Grid } from '@mui/material';
 import RuneContainerMain from './RuneContainerMain';
 import RuneContainerSub from './RuneContainerSub';
 import RuneContainerStat from './RuneContainerStat';
+import BackendURL from '../shared/BackendURL';
 
 function RuneContainer(props) {
     //what is in props
@@ -20,7 +21,7 @@ function RuneContainer(props) {
         console.log(props.lane, props.myPickEn, props.enemyPickEn);
         axios
             .get(
-                `http://3.35.222.47:3001/rune/${props.lane}/${props.myPickEn}/${props.enemyPickEn}`
+                `${BackendURL}/rune/${props.lane}/${props.myPickEn}/${props.enemyPickEn}`
             )
             .then((res) => {
                 if (res.status === 204) {

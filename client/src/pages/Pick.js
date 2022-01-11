@@ -5,6 +5,7 @@ import axios from 'axios';
 import CancelIcon from '@mui/icons-material/Cancel';
 import { IconButton } from '@material-ui/core';
 import CheckIcon from '@mui/icons-material/Check';
+import backendURL from '../shared/BackendURL';
 // import itemDataAll from '../data/itemDataAll';
 
 function Pick({ history, match, location }) {
@@ -36,9 +37,11 @@ function Pick({ history, match, location }) {
     }
 
     useEffect(() => {
+        console.log(`${backendURL}/champions/all`);
         axios
-            .get('http://127.0.0.1:3001/champions/all')
+            .get(`${backendURL}/champions/all`)
             .then((res) => {
+                console.log(res);
                 let list = res.data.list;
                 list.sort(function (a, b) {
                     return a.name < b.name ? -1 : a.name > b.name ? 1 : 0;

@@ -2,6 +2,7 @@ import { React, useState } from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import axios from 'axios';
+import BackendURL from '../../shared/BackendURL';
 
 export default function MultilineTextFields(props) {
     const myPick = props.myPick;
@@ -27,15 +28,11 @@ export default function MultilineTextFields(props) {
             comment: value,
         };
         axios
-            .post(
-                'http://3.35.222.47:3001/comments/',
-                JSON.stringify(commentData),
-                {
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                }
-            )
+            .post(`${BackendURL}/comments/`, JSON.stringify(commentData), {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
             .then((res) => {
                 console.log(res);
                 console.log('자네의 꿀팁이 성공적으로 저장되었소');
