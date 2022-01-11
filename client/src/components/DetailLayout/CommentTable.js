@@ -22,12 +22,11 @@ function Comment({ list, setRefresh, refresh }) {
                     console.log(
                         `like was ${likeBefore}, now ${likeBefore + 1}`
                     );
+                    setRefresh(refresh + 1);
                 })
                 .catch((err) => {
                     console.log(err);
                 });
-
-            setRefresh(!refresh);
         }
     }, [liked]);
 
@@ -45,11 +44,11 @@ function Comment({ list, setRefresh, refresh }) {
                     console.log(
                         `dislike was ${dislikeBefore}, now ${dislikeBefore + 1}`
                     );
+                    setRefresh(refresh + 1);
                 })
                 .catch((err) => {
                     console.log(err);
                 });
-            setRefresh(!refresh);
         }
     }, [disliked]);
 
@@ -76,7 +75,6 @@ function Comment({ list, setRefresh, refresh }) {
                     <IconButton
                         onClick={() => {
                             likeClickHandler();
-                            console.log('rendering test');
                         }}
                     >
                         <ThumbUpIcon fontSize="small"></ThumbUpIcon>
