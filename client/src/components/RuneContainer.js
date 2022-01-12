@@ -5,6 +5,7 @@ import RuneContainerMain from './RuneContainerMain';
 import RuneContainerSub from './RuneContainerSub';
 import RuneContainerStat from './RuneContainerStat';
 import BackendURL from '../shared/BackendURL';
+import { isEmptyOrUndefinedOrNull } from '../util/stringUtils';
 
 function RuneContainer(props) {
     //what is in props
@@ -18,6 +19,14 @@ function RuneContainer(props) {
     const [stat, setStat] = useState([]);
 
     useEffect(() => {
+        if (
+            isEmptyOrUndefinedOrNull(props.lane) ||
+            isEmptyOrUndefinedOrNull(props.myPickEn) ||
+            isEmptyOrUndefinedOrNull(props.enemyPickEn)
+        ) {
+            return;
+        }
+
         console.log(props.lane, props.myPickEn, props.enemyPickEn);
         axios
             .get(

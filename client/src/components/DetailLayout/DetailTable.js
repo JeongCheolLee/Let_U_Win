@@ -2,6 +2,7 @@ import { React, useEffect, useState } from 'react';
 import axios from 'axios';
 import Tooltip from '@mui/material/Tooltip';
 import BackendURL from '../../shared/BackendURL';
+import { isEmptyOrUndefinedOrNull } from '../../util/stringUtils';
 
 export default function DetailTable(props) {
     const lane = props.lane;
@@ -31,6 +32,13 @@ export default function DetailTable(props) {
     const [enemyChampLevel, setEnemyChampLevel] = useState('');
 
     useEffect(() => {
+        if (
+            isEmptyOrUndefinedOrNull(props.lane) ||
+            isEmptyOrUndefinedOrNull(props.myPickEn) ||
+            isEmptyOrUndefinedOrNull(props.enemyPickEn)
+        ) {
+            return;
+        }
         axios
             .get(`${BackendURL}/statistic/winrate/${myPickEn}/${lane}`)
             .then((res) => {
