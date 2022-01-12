@@ -1,4 +1,4 @@
 // client/src/shared/BackendURL.js
-const backendURL = '';
+const backendURL = 'http://localhost:3001';
 
 export default backendURL;

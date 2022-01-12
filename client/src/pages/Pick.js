@@ -12,8 +12,13 @@ function Pick({ history, match, location }) {
     const goongseo = { fontWeight: 'bold', fontFamily: ['궁서', '궁서체'] };
 
     const [championsList, setChampionsList] = useState([]);
-    const [filteredChampionsList, setFilteredChampionsList] = useState([]);
-    const [searchText, setSearchText] = useState('');
+    const [filteredChampionsListLeft, setFilteredChampionsListLeft] = useState(
+        []
+    );
+    const [filteredChampionsListRight, setFilteredChampionsListRight] =
+        useState([]);
+    const [searchTextLeft, setSearchTextLeft] = useState('');
+    const [searchTextRight, setSearchTextRight] = useState('');
     const [myPick, setMyPick] = useState('none');
     const [enemyPick, setEnemyPick] = useState('none');
     const [myImgUrl, setMyImgUrl] = useState('');
@@ -54,30 +59,48 @@ function Pick({ history, match, location }) {
             });
     }, []);
 
+    //left
     useEffect(() => {
-        if (searchText !== '') {
-            setFilteredChampionsList((prevState) => {
+        if (searchTextLeft !== '') {
+            setFilteredChampionsListLeft((prevState) => {
                 let temp = [];
                 championsList.map((item) => {
-                    if (item.name.startsWith(searchText)) {
+                    if (item.name.startsWith(searchTextLeft)) {
                         temp.push(item);
                     }
                 });
                 return temp.slice();
             });
         } else {
-            setFilteredChampionsList(championsList.slice());
+            setFilteredChampionsListLeft(championsList.slice());
         }
-    }, [searchText, championsList]);
+    }, [searchTextLeft, championsList]);
+
+    //right
+    useEffect(() => {
+        if (searchTextRight !== '') {
+            setFilteredChampionsListRight((prevState) => {
+                let temp = [];
+                championsList.map((item) => {
+                    if (item.name.startsWith(searchTextRight)) {
+                        temp.push(item);
+                    }
+                });
+                return temp.slice();
+            });
+        } else {
+            setFilteredChampionsListRight(championsList.slice());
+        }
+    }, [searchTextRight, championsList]);
 
     const getMyPickFromImageList = useCallback((champ) => {
         setMyPick(champ);
-        setSearchText('');
+        setSearchTextLeft('');
     });
 
     const getEnemyPickFromImageList = useCallback((champ) => {
         setEnemyPick(champ);
-        setSearchText('');
+        setSearchTextRight('');
     }, []);
 
     useEffect(() => {
@@ -106,8 +129,12 @@ function Pick({ history, match, location }) {
         }
     }, [enemyPick]);
 
-    const getSearchTextFromSearchBar = useCallback((text) => {
-        setSearchText(text);
+    const getSearchTextFromSearchBarLeft = useCallback((text) => {
+        setSearchTextLeft(text);
+    }, []);
+
+    const getSearchTextFromSearchBarRight = useCallback((text) => {
+        setSearchTextRight(text);
     }, []);
 
     const onClickMyPickCancelBtn = () => {
@@ -148,11 +175,13 @@ function Pick({ history, match, location }) {
                             <SearchBar
                                 label="챔피언명을 입력해주세요"
                                 getSearchTextFromSearchBar={
-                                    getSearchTextFromSearchBar
+                                    getSearchTextFromSearchBarLeft
                                 }
                             />
                             <ImageListHjlee
-                                filteredChampionsList={filteredChampionsList}
+                                filteredChampionsList={
+                                    filteredChampionsListLeft
+                                }
                                 getPickFromImageList={getMyPickFromImageList}
                             />
                         </div>
@@ -235,11 +264,13 @@ function Pick({ history, match, location }) {
                             <SearchBar
                                 label="챔피언명을 입력해주세요"
                                 getSearchTextFromSearchBar={
-                                    getSearchTextFromSearchBar
+                                    getSearchTextFromSearchBarRight
                                 }
                             />
                             <ImageListHjlee
-                                filteredChampionsList={filteredChampionsList}
+                                filteredChampionsList={
+                                    filteredChampionsListRight
+                                }
                                 getPickFromImageList={getEnemyPickFromImageList}
                             />
                         </div>
