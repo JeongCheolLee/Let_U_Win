@@ -6,12 +6,12 @@ const app = express();
 const port = 3001;
 const cors = require('cors');
 
-//routes
-var statisticRouter = require('./routes/statistic');
-var championsRouter = require('./routes/champions');
-var runeRouter = require('./routes/rune');
-var commentRouter = require('./routes/comments');
-
+// //routes
+// var statisticRouter = require('./routes/statistic');
+// var championsRouter = require('./routes/champions');
+// var runeRouter = require('./routes/rune');
+// var commentRouter = require('./routes/comments');
+var apiRouter = require('./routes/api');
 mongoose
     .connect(mongoURI, {
         // useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false
@@ -27,10 +27,11 @@ app.use(express.urlencoded({ extended: true }));
 //application/json 을 분석 가능하게
 app.use(express.json());
 
-app.use('/champions', championsRouter);
-app.use('/statistic', statisticRouter);
-app.use('/rune', runeRouter);
-app.use('/comments', commentRouter);
+app.use('/api', apiRouter);
+// app.use('/champions', championsRouter);
+// app.use('/statistic', statisticRouter);
+// app.use('/rune', runeRouter);
+// app.use('/comments', commentRouter);
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);

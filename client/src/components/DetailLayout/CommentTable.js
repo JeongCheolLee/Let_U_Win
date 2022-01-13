@@ -104,6 +104,7 @@ function CommentTable(props) {
     const [refresh, setRefresh] = useState(true);
 
     useEffect(() => {
+        console.log(`${BackendURL}/comments/all/${myPick}/${enemyPick}`);
         axios
             .get(`${BackendURL}/comments/all/${myPick}/${enemyPick}`)
             .then((res) => {

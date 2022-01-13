@@ -36,7 +36,7 @@ function ButtonClickable(props) {
     }
 
     return (
-        <IconButton onClick={btnClickHandler} variant="contained" size="large">
+        <IconButton onClick={btnClickHandler} variant="contained" size="medium">
             <img src={laneImgSrc}></img>
             <span
                 style={{

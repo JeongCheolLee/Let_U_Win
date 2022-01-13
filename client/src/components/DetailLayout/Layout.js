@@ -63,12 +63,14 @@ function Layout(props) {
             <CommentSideBar>
                 <StickyBox offsetTop={20} offsetBottom={20}>
                     <CommentTable
-                        myPick={props.myPick}
-                        enemyPick={props.enemyPick}
+                        myPick={props.myPickEn}
+                        enemyPick={props.enemyPickEn}
                     ></CommentTable>
                     <CommentInputBox
                         myPick={props.myPick}
                         enemyPick={props.enemyPick}
+                        myPickEn={props.myPickEn}
+                        enemyPickEn={props.enemyPickEn}
                         setComment={setComment}
                         comment={comment}
                     ></CommentInputBox>

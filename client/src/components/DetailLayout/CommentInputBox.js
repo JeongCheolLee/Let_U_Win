@@ -5,9 +5,11 @@ import axios from 'axios';
 import BackendURL from '../../shared/BackendURL';
 
 export default function MultilineTextFields(props) {
-    const myPick = props.myPick;
-    const enemyPick = props.enemyPick;
-    const defaultValue = `${myPick}로 ${enemyPick}을 상대할 때 꿀팁을 알려주게나!`;
+    const myPick = props.myPickEn;
+    const enemyPick = props.enemyPickEn;
+    const myPickKr = props.myPick;
+    const enemyPickKr = props.enemyPick;
+    const defaultValue = `${myPickKr}로 ${enemyPickKr}을 상대할 때 꿀팁을 알려주게나!`;
 
     const [value, setValue] = useState('');
 
