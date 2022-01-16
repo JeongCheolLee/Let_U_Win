@@ -4,7 +4,7 @@ import TextField from '@mui/material/TextField';
 import axios from 'axios';
 import BackendURL from '../../shared/BackendURL';
 
-export default function MultilineTextFields(props) {
+export default function CommentInputBox(props) {
     const myPick = props.myPickEn;
     const enemyPick = props.enemyPickEn;
     const myPickKr = props.myPick;
