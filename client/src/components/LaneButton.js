@@ -4,7 +4,7 @@ import { IconButton } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import '../css/Home.css';
 
-function ButtonClickable(props) {
+function LaneButton(props) {
     const history = props.history;
     const [lane, setLane] = useState(props.lane.ko);
 
@@ -51,4 +51,4 @@ function ButtonClickable(props) {
     );
 }
 
-export default ButtonClickable;
+export default LaneButton;

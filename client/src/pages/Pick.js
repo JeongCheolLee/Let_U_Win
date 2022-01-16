@@ -1,5 +1,5 @@
 import { React, useState, useCallback, useEffect } from 'react';
-import ImageListHjlee from '../components/ImageListHjlee';
+import ChampionImageList from '../components/ChampionImageList';
 import SearchBar from '../components/SearchBar';
 import axios from 'axios';
 import CancelIcon from '@mui/icons-material/Cancel';
@@ -178,7 +178,7 @@ function Pick({ history, match, location }) {
                                     getSearchTextFromSearchBarLeft
                                 }
                             />
-                            <ImageListHjlee
+                            <ChampionImageList
                                 filteredChampionsList={
                                     filteredChampionsListLeft
                                 }
@@ -267,7 +267,7 @@ function Pick({ history, match, location }) {
                                     getSearchTextFromSearchBarRight
                                 }
                             />
-                            <ImageListHjlee
+                            <ChampionImageList
                                 filteredChampionsList={
                                     filteredChampionsListRight
                                 }

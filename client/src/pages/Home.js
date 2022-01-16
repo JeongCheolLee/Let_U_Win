@@ -1,5 +1,5 @@
 import { React } from 'react';
-import ButtonClickable from '../components/ButtonClickable.js';
+import LaneButton from '../components/LaneButton.js';
 import '../css/Home.css';
 function Home({ history }) {
     const lanes = [
@@ -56,7 +56,7 @@ function Home({ history }) {
             </div>
             {lanes.map((item) => {
                 return (
-                    <ButtonClickable
+                    <LaneButton
                         history={history}
                         key={item.en + item.ko}
                         lane={item}

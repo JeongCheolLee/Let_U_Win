@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function ImageListHjlee(props) {
+export default function ChampionImageList(props) {
     const classes = useStyles();
 
     const itemData = props.filteredChampionsList;
