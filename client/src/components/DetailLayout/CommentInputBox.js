@@ -20,7 +20,10 @@ export default function CommentInputBox(props) {
     const clickHandler = () => {
         console.log(props.comment);
         console.log('clickHandler clicked');
-        props.setComment(value);
+        props.setComment(() => {
+            console.log('setComment');
+            return value;
+        });
         console.log(props.comment);
 
         let commentData = {
